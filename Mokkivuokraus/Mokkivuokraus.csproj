@@ -46,11 +46,29 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Form1.cs">
+    <Compile Include="Aloitus.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="Aloitus.Designer.cs">
+      <DependentUpon>Aloitus.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Asiakas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Asiakas.Designer.cs">
+      <DependentUpon>Asiakas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Mokki.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Mokki.Designer.cs">
+      <DependentUpon>Mokki.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Palvelu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Palvelu.Designer.cs">
+      <DependentUpon>Palvelu.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Mokkivuokraus
 {
-    public partial class Form1 : Form
+    public partial class Mokki : Form
     {
-        public Form1()
+        public Mokki()
         {
             InitializeComponent();
         }
