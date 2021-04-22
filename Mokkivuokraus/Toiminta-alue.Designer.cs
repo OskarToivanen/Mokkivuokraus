@@ -46,19 +46,23 @@ namespace Mokkivuokraus
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.tsslKello = new System.Windows.Forms.ToolStripStatusLabel();
             this.timerKellonAika = new System.Windows.Forms.Timer(this.components);
-            this.cbPostinumero = new System.Windows.Forms.ComboBox();
-            this.cbToimipaikka = new System.Windows.Forms.ComboBox();
+            this.postiBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.villageNewbiesDataset = new Mokkivuokraus.VillageNewbiesDataset();
             this.btnLisaa = new System.Windows.Forms.Button();
             this.btnMuokkaa = new System.Windows.Forms.Button();
             this.btnPoista = new System.Windows.Forms.Button();
-            this.villageNewbiesDataset = new Mokkivuokraus.VillageNewbiesDataset();
-            this.postiBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.postiTableAdapter = new Mokkivuokraus.VillageNewbiesDatasetTableAdapters.postiTableAdapter();
+            this.dgvPosti = new System.Windows.Forms.DataGridView();
+            this.tbPostinumero = new System.Windows.Forms.TextBox();
+            this.tbToimipaikka = new System.Windows.Forms.TextBox();
+            this.lisääToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tyhjennäTiedotToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dgvToimintaAlue)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.villageNewbiesDataset)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.postiBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.villageNewbiesDataset)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPosti)).BeginInit();
             this.SuspendLayout();
             // 
             // dgvToimintaAlue
@@ -67,12 +71,11 @@ namespace Mokkivuokraus
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvToimintaAlue.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvToimintaAlue.Location = new System.Drawing.Point(391, 31);
+            this.dgvToimintaAlue.Location = new System.Drawing.Point(380, 31);
             this.dgvToimintaAlue.Name = "dgvToimintaAlue";
             this.dgvToimintaAlue.RowHeadersWidth = 51;
             this.dgvToimintaAlue.RowTemplate.Height = 24;
-            this.dgvToimintaAlue.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvToimintaAlue.Size = new System.Drawing.Size(397, 394);
+            this.dgvToimintaAlue.Size = new System.Drawing.Size(499, 238);
             this.dgvToimintaAlue.TabIndex = 0;
             this.dgvToimintaAlue.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvToimintaAlue_CellClick);
             // 
@@ -80,10 +83,11 @@ namespace Mokkivuokraus
             // 
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.avaaToolStripMenuItem});
+            this.avaaToolStripMenuItem,
+            this.lisääToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(800, 28);
+            this.menuStrip1.Size = new System.Drawing.Size(888, 28);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -100,21 +104,21 @@ namespace Mokkivuokraus
             // mokkiToolStripMenuItem
             // 
             this.mokkiToolStripMenuItem.Name = "mokkiToolStripMenuItem";
-            this.mokkiToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.mokkiToolStripMenuItem.Size = new System.Drawing.Size(143, 26);
             this.mokkiToolStripMenuItem.Text = "Mökki";
             this.mokkiToolStripMenuItem.Click += new System.EventHandler(this.mökkiToolStripMenuItem_Click);
             // 
             // asiakasToolStripMenuItem
             // 
             this.asiakasToolStripMenuItem.Name = "asiakasToolStripMenuItem";
-            this.asiakasToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.asiakasToolStripMenuItem.Size = new System.Drawing.Size(143, 26);
             this.asiakasToolStripMenuItem.Text = "Asiakas";
             this.asiakasToolStripMenuItem.Click += new System.EventHandler(this.asiakasToolStripMenuItem_Click);
             // 
             // palvelutToolStripMenuItem
             // 
             this.palvelutToolStripMenuItem.Name = "palvelutToolStripMenuItem";
-            this.palvelutToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.palvelutToolStripMenuItem.Size = new System.Drawing.Size(143, 26);
             this.palvelutToolStripMenuItem.Text = "Palvelut";
             this.palvelutToolStripMenuItem.Click += new System.EventHandler(this.palvelutToolStripMenuItem_Click);
             // 
@@ -143,7 +147,7 @@ namespace Mokkivuokraus
             this.tbToimintaAlueID.Location = new System.Drawing.Point(16, 119);
             this.tbToimintaAlueID.Name = "tbToimintaAlueID";
             this.tbToimintaAlueID.Size = new System.Drawing.Size(117, 22);
-            this.tbToimintaAlueID.TabIndex = 4;
+            this.tbToimintaAlueID.TabIndex = 1;
             // 
             // label3
             // 
@@ -159,7 +163,7 @@ namespace Mokkivuokraus
             this.tbToimintaAlue.Location = new System.Drawing.Point(16, 192);
             this.tbToimintaAlue.Name = "tbToimintaAlue";
             this.tbToimintaAlue.Size = new System.Drawing.Size(117, 22);
-            this.tbToimintaAlue.TabIndex = 6;
+            this.tbToimintaAlue.TabIndex = 2;
             // 
             // label4
             // 
@@ -184,9 +188,9 @@ namespace Mokkivuokraus
             this.statusStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsslKello});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 424);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 527);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(800, 26);
+            this.statusStrip1.Size = new System.Drawing.Size(888, 26);
             this.statusStrip1.TabIndex = 11;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -200,34 +204,22 @@ namespace Mokkivuokraus
             // 
             this.timerKellonAika.Tick += new System.EventHandler(this.timerKellonAika_Tick);
             // 
-            // cbPostinumero
+            // postiBindingSource
             // 
-            this.cbPostinumero.DataSource = this.postiBindingSource;
-            this.cbPostinumero.DisplayMember = "postinro";
-            this.cbPostinumero.FormattingEnabled = true;
-            this.cbPostinumero.Location = new System.Drawing.Point(16, 272);
-            this.cbPostinumero.Name = "cbPostinumero";
-            this.cbPostinumero.Size = new System.Drawing.Size(121, 24);
-            this.cbPostinumero.TabIndex = 12;
-            this.cbPostinumero.ValueMember = "toimipaikka";
-            this.cbPostinumero.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cbPostinumero_KeyPress);
+            this.postiBindingSource.DataMember = "posti";
+            this.postiBindingSource.DataSource = this.villageNewbiesDataset;
             // 
-            // cbToimipaikka
+            // villageNewbiesDataset
             // 
-            this.cbToimipaikka.DataSource = this.postiBindingSource;
-            this.cbToimipaikka.DisplayMember = "toimipaikka";
-            this.cbToimipaikka.FormattingEnabled = true;
-            this.cbToimipaikka.Location = new System.Drawing.Point(16, 363);
-            this.cbToimipaikka.Name = "cbToimipaikka";
-            this.cbToimipaikka.Size = new System.Drawing.Size(121, 24);
-            this.cbToimipaikka.TabIndex = 13;
+            this.villageNewbiesDataset.DataSetName = "VillageNewbiesDataset";
+            this.villageNewbiesDataset.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // btnLisaa
             // 
             this.btnLisaa.Location = new System.Drawing.Point(249, 118);
             this.btnLisaa.Name = "btnLisaa";
             this.btnLisaa.Size = new System.Drawing.Size(82, 34);
-            this.btnLisaa.TabIndex = 14;
+            this.btnLisaa.TabIndex = 5;
             this.btnLisaa.Text = "Lisää";
             this.btnLisaa.UseVisualStyleBackColor = true;
             this.btnLisaa.Click += new System.EventHandler(this.btnLisaa_Click);
@@ -237,7 +229,7 @@ namespace Mokkivuokraus
             this.btnMuokkaa.Location = new System.Drawing.Point(249, 191);
             this.btnMuokkaa.Name = "btnMuokkaa";
             this.btnMuokkaa.Size = new System.Drawing.Size(82, 37);
-            this.btnMuokkaa.TabIndex = 15;
+            this.btnMuokkaa.TabIndex = 6;
             this.btnMuokkaa.Text = "Muokkaa";
             this.btnMuokkaa.UseVisualStyleBackColor = true;
             this.btnMuokkaa.Click += new System.EventHandler(this.btnMuokkaa_Click);
@@ -247,35 +239,71 @@ namespace Mokkivuokraus
             this.btnPoista.Location = new System.Drawing.Point(249, 272);
             this.btnPoista.Name = "btnPoista";
             this.btnPoista.Size = new System.Drawing.Size(82, 35);
-            this.btnPoista.TabIndex = 16;
+            this.btnPoista.TabIndex = 7;
             this.btnPoista.Text = "Poista";
             this.btnPoista.UseVisualStyleBackColor = true;
             this.btnPoista.Click += new System.EventHandler(this.btnPoista_Click);
-            // 
-            // villageNewbiesDataset
-            // 
-            this.villageNewbiesDataset.DataSetName = "VillageNewbiesDataset";
-            this.villageNewbiesDataset.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // postiBindingSource
-            // 
-            this.postiBindingSource.DataMember = "posti";
-            this.postiBindingSource.DataSource = this.villageNewbiesDataset;
             // 
             // postiTableAdapter
             // 
             this.postiTableAdapter.ClearBeforeFill = true;
             // 
+            // dgvPosti
+            // 
+            this.dgvPosti.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgvPosti.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvPosti.Location = new System.Drawing.Point(380, 272);
+            this.dgvPosti.Name = "dgvPosti";
+            this.dgvPosti.RowHeadersWidth = 51;
+            this.dgvPosti.RowTemplate.Height = 24;
+            this.dgvPosti.Size = new System.Drawing.Size(499, 252);
+            this.dgvPosti.TabIndex = 12;
+            this.dgvPosti.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPosti_CellClick);
+            // 
+            // tbPostinumero
+            // 
+            this.tbPostinumero.Location = new System.Drawing.Point(16, 272);
+            this.tbPostinumero.MaxLength = 5;
+            this.tbPostinumero.Name = "tbPostinumero";
+            this.tbPostinumero.Size = new System.Drawing.Size(117, 22);
+            this.tbPostinumero.TabIndex = 3;
+            this.tbPostinumero.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbPostinumero_KeyPress);
+            // 
+            // tbToimipaikka
+            // 
+            this.tbToimipaikka.Location = new System.Drawing.Point(16, 356);
+            this.tbToimipaikka.Name = "tbToimipaikka";
+            this.tbToimipaikka.Size = new System.Drawing.Size(117, 22);
+            this.tbToimipaikka.TabIndex = 4;
+            // 
+            // lisääToolStripMenuItem
+            // 
+            this.lisääToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tyhjennäTiedotToolStripMenuItem});
+            this.lisääToolStripMenuItem.Name = "lisääToolStripMenuItem";
+            this.lisääToolStripMenuItem.Size = new System.Drawing.Size(56, 24);
+            this.lisääToolStripMenuItem.Text = "Lisää";
+            // 
+            // tyhjennäTiedotToolStripMenuItem
+            // 
+            this.tyhjennäTiedotToolStripMenuItem.Name = "tyhjennäTiedotToolStripMenuItem";
+            this.tyhjennäTiedotToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.tyhjennäTiedotToolStripMenuItem.Text = "Tyhjennä tiedot";
+            this.tyhjennäTiedotToolStripMenuItem.Click += new System.EventHandler(this.tyhjennäTiedotToolStripMenuItem_Click);
+            // 
             // Aloitus
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(888, 553);
+            this.Controls.Add(this.tbToimipaikka);
+            this.Controls.Add(this.tbPostinumero);
+            this.Controls.Add(this.dgvPosti);
             this.Controls.Add(this.btnPoista);
             this.Controls.Add(this.btnMuokkaa);
             this.Controls.Add(this.btnLisaa);
-            this.Controls.Add(this.cbToimipaikka);
-            this.Controls.Add(this.cbPostinumero);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
@@ -295,8 +323,9 @@ namespace Mokkivuokraus
             this.menuStrip1.PerformLayout();
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.villageNewbiesDataset)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.postiBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.villageNewbiesDataset)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPosti)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -320,14 +349,17 @@ namespace Mokkivuokraus
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel tsslKello;
         private System.Windows.Forms.Timer timerKellonAika;
-        private System.Windows.Forms.ComboBox cbPostinumero;
-        private System.Windows.Forms.ComboBox cbToimipaikka;
         private System.Windows.Forms.Button btnLisaa;
         private System.Windows.Forms.Button btnMuokkaa;
         private System.Windows.Forms.Button btnPoista;
         private VillageNewbiesDataset villageNewbiesDataset;
         private System.Windows.Forms.BindingSource postiBindingSource;
         private VillageNewbiesDatasetTableAdapters.postiTableAdapter postiTableAdapter;
+        private System.Windows.Forms.DataGridView dgvPosti;
+        private System.Windows.Forms.TextBox tbPostinumero;
+        private System.Windows.Forms.TextBox tbToimipaikka;
+        private System.Windows.Forms.ToolStripMenuItem lisääToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem tyhjennäTiedotToolStripMenuItem;
     }
 }
 

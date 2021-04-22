@@ -89,6 +89,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="SQL.cs" />
     <Compile Include="Toiminta-alue.cs">
       <SubType>Form</SubType>
     </Compile>
