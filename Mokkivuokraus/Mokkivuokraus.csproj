@@ -121,6 +121,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>VillageNewbiesDataset.xsd</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Asiakas.resx">
+      <DependentUpon>Asiakas.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Mokki.resx">
       <DependentUpon>Mokki.cs</DependentUpon>
     </EmbeddedResource>
