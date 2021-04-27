@@ -29,199 +29,320 @@ namespace Mokkivuokraus
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.lMokkiID = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
+            this.lToimintaAlue = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.label9 = new System.Windows.Forms.Label();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
-            this.label10 = new System.Windows.Forms.Label();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
-            this.label11 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            this.lPosti_Nro_Muuttuu = new System.Windows.Forms.Label();
+            this.lMokki = new System.Windows.Forms.Label();
+            this.tbMokkiName = new System.Windows.Forms.TextBox();
+            this.lOsoite = new System.Windows.Forms.Label();
+            this.tbOsoite = new System.Windows.Forms.TextBox();
+            this.lKuvaus = new System.Windows.Forms.Label();
+            this.rtbKuvaus = new System.Windows.Forms.RichTextBox();
+            this.lHenkiloMaara = new System.Windows.Forms.Label();
+            this.nudHenkiloMaara = new System.Windows.Forms.NumericUpDown();
+            this.lVarustelu = new System.Windows.Forms.Label();
+            this.btnSeuraava = new System.Windows.Forms.Button();
+            this.clbVarutelu = new System.Windows.Forms.CheckedListBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.lHinta = new System.Windows.Forms.Label();
+            this.tbHinta = new System.Windows.Forms.TextBox();
+            this.btnLisaa = new System.Windows.Forms.Button();
+            this.btnMuokkaa = new System.Windows.Forms.Button();
+            this.btnPoista = new System.Windows.Forms.Button();
+            this.dvgMokit = new System.Windows.Forms.DataGridView();
+            this.villageNewbiesDataset = new Mokkivuokraus.VillageNewbiesDataset();
+            this.villageNewbiesDatasetBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.tbPostiNro = new System.Windows.Forms.TextBox();
+            this.lPostiNro = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.nudHenkiloMaara)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dvgMokit)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.villageNewbiesDataset)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.villageNewbiesDatasetBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(30, 31);
+            this.label1.Location = new System.Drawing.Point(25, 43);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(62, 13);
             this.label1.TabIndex = 0;
             this.label1.Text = "Mökki ID:";
             // 
-            // label2
+            // lMokkiID
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(89, 31);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(13, 13);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "0";
+            this.lMokkiID.AutoSize = true;
+            this.lMokkiID.Location = new System.Drawing.Point(93, 43);
+            this.lMokkiID.Name = "lMokkiID";
+            this.lMokkiID.Size = new System.Drawing.Size(13, 13);
+            this.lMokkiID.TabIndex = 1;
+            this.lMokkiID.Text = "0";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(30, 65);
+            this.label3.Location = new System.Drawing.Point(25, 64);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(65, 13);
             this.label3.TabIndex = 2;
             this.label3.Text = "Toimialue:";
             // 
-            // label4
+            // lToimintaAlue
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(89, 65);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(38, 13);
-            this.label4.TabIndex = 3;
-            this.label4.Text = "Tahko";
+            this.lToimintaAlue.AutoSize = true;
+            this.lToimintaAlue.Location = new System.Drawing.Point(96, 64);
+            this.lToimintaAlue.Name = "lToimintaAlue";
+            this.lToimintaAlue.Size = new System.Drawing.Size(38, 13);
+            this.lToimintaAlue.TabIndex = 3;
+            this.lToimintaAlue.Text = "Tahko";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(30, 99);
+            this.label5.Location = new System.Drawing.Point(25, 85);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(80, 13);
             this.label5.TabIndex = 4;
             this.label5.Text = "Postinumero:";
             // 
-            // label6
+            // lPosti_Nro_Muuttuu
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(104, 99);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(37, 13);
-            this.label6.TabIndex = 5;
-            this.label6.Text = "70600";
+            this.lPosti_Nro_Muuttuu.AutoSize = true;
+            this.lPosti_Nro_Muuttuu.Location = new System.Drawing.Point(111, 85);
+            this.lPosti_Nro_Muuttuu.Name = "lPosti_Nro_Muuttuu";
+            this.lPosti_Nro_Muuttuu.Size = new System.Drawing.Size(37, 13);
+            this.lPosti_Nro_Muuttuu.TabIndex = 5;
+            this.lPosti_Nro_Muuttuu.Text = "70600";
             // 
-            // label7
+            // lMokki
             // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(30, 133);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(36, 13);
-            this.label7.TabIndex = 6;
-            this.label7.Text = "Mökki";
+            this.lMokki.AutoSize = true;
+            this.lMokki.Location = new System.Drawing.Point(25, 104);
+            this.lMokki.Name = "lMokki";
+            this.lMokki.Size = new System.Drawing.Size(36, 13);
+            this.lMokki.TabIndex = 6;
+            this.lMokki.Text = "Mökki";
             // 
-            // textBox1
+            // tbMokkiName
             // 
-            this.textBox1.Location = new System.Drawing.Point(72, 130);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 7;
+            this.tbMokkiName.Location = new System.Drawing.Point(28, 120);
+            this.tbMokkiName.Name = "tbMokkiName";
+            this.tbMokkiName.Size = new System.Drawing.Size(167, 20);
+            this.tbMokkiName.TabIndex = 7;
             // 
-            // label8
+            // lOsoite
             // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(30, 167);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(37, 13);
-            this.label8.TabIndex = 8;
-            this.label8.Text = "Osoite";
+            this.lOsoite.AutoSize = true;
+            this.lOsoite.Location = new System.Drawing.Point(25, 181);
+            this.lOsoite.Name = "lOsoite";
+            this.lOsoite.Size = new System.Drawing.Size(37, 13);
+            this.lOsoite.TabIndex = 8;
+            this.lOsoite.Text = "Osoite";
             // 
-            // textBox2
+            // tbOsoite
             // 
-            this.textBox2.Location = new System.Drawing.Point(73, 164);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 20);
-            this.textBox2.TabIndex = 9;
+            this.tbOsoite.Location = new System.Drawing.Point(28, 197);
+            this.tbOsoite.Name = "tbOsoite";
+            this.tbOsoite.Size = new System.Drawing.Size(167, 20);
+            this.tbOsoite.TabIndex = 9;
             // 
-            // label9
+            // lKuvaus
             // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(30, 201);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(43, 13);
-            this.label9.TabIndex = 10;
-            this.label9.Text = "Kuvaus";
+            this.lKuvaus.AutoSize = true;
+            this.lKuvaus.Location = new System.Drawing.Point(25, 295);
+            this.lKuvaus.Name = "lKuvaus";
+            this.lKuvaus.Size = new System.Drawing.Size(43, 13);
+            this.lKuvaus.TabIndex = 10;
+            this.lKuvaus.Text = "Kuvaus";
             // 
-            // richTextBox1
+            // rtbKuvaus
             // 
-            this.richTextBox1.Location = new System.Drawing.Point(73, 204);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(167, 96);
-            this.richTextBox1.TabIndex = 11;
-            this.richTextBox1.Text = "";
+            this.rtbKuvaus.Location = new System.Drawing.Point(28, 311);
+            this.rtbKuvaus.Name = "rtbKuvaus";
+            this.rtbKuvaus.Size = new System.Drawing.Size(167, 96);
+            this.rtbKuvaus.TabIndex = 11;
+            this.rtbKuvaus.Text = "";
             // 
-            // label10
+            // lHenkiloMaara
             // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(30, 320);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(75, 13);
-            this.label10.TabIndex = 12;
-            this.label10.Text = "Henkilö määrä";
+            this.lHenkiloMaara.AutoSize = true;
+            this.lHenkiloMaara.Location = new System.Drawing.Point(25, 220);
+            this.lHenkiloMaara.Name = "lHenkiloMaara";
+            this.lHenkiloMaara.Size = new System.Drawing.Size(75, 13);
+            this.lHenkiloMaara.TabIndex = 12;
+            this.lHenkiloMaara.Text = "Henkilö määrä";
             // 
-            // numericUpDown1
+            // nudHenkiloMaara
             // 
-            this.numericUpDown1.Location = new System.Drawing.Point(111, 318);
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(40, 20);
-            this.numericUpDown1.TabIndex = 13;
+            this.nudHenkiloMaara.Location = new System.Drawing.Point(28, 236);
+            this.nudHenkiloMaara.Name = "nudHenkiloMaara";
+            this.nudHenkiloMaara.Size = new System.Drawing.Size(167, 20);
+            this.nudHenkiloMaara.TabIndex = 13;
             // 
-            // label11
+            // lVarustelu
             // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(260, 132);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(51, 13);
-            this.label11.TabIndex = 14;
-            this.label11.Text = "Varustelu";
+            this.lVarustelu.AutoSize = true;
+            this.lVarustelu.Location = new System.Drawing.Point(25, 410);
+            this.lVarustelu.Name = "lVarustelu";
+            this.lVarustelu.Size = new System.Drawing.Size(51, 13);
+            this.lVarustelu.TabIndex = 14;
+            this.lVarustelu.Text = "Varustelu";
             // 
-            // button1
+            // btnSeuraava
             // 
-            this.button1.Location = new System.Drawing.Point(545, 375);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 16;
-            this.button1.Text = "Seuraava";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnSeuraava.Location = new System.Drawing.Point(28, 481);
+            this.btnSeuraava.Name = "btnSeuraava";
+            this.btnSeuraava.Size = new System.Drawing.Size(88, 34);
+            this.btnSeuraava.TabIndex = 16;
+            this.btnSeuraava.Text = "Seuraava";
+            this.btnSeuraava.UseVisualStyleBackColor = true;
             // 
-            // checkedListBox1
+            // clbVarutelu
             // 
-            this.checkedListBox1.FormattingEnabled = true;
-            this.checkedListBox1.Location = new System.Drawing.Point(318, 133);
-            this.checkedListBox1.Name = "checkedListBox1";
-            this.checkedListBox1.Size = new System.Drawing.Size(147, 169);
-            this.checkedListBox1.TabIndex = 17;
+            this.clbVarutelu.FormattingEnabled = true;
+            this.clbVarutelu.Items.AddRange(new object[] {
+            "Siivous",
+            "Lakanat"});
+            this.clbVarutelu.Location = new System.Drawing.Point(28, 426);
+            this.clbVarutelu.Name = "clbVarutelu";
+            this.clbVarutelu.Size = new System.Drawing.Size(167, 49);
+            this.clbVarutelu.TabIndex = 17;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.Location = new System.Drawing.Point(24, 9);
+            this.label13.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(111, 24);
+            this.label13.TabIndex = 19;
+            this.label13.Text = "Mökin lisäys";
+            // 
+            // lHinta
+            // 
+            this.lHinta.AutoSize = true;
+            this.lHinta.Location = new System.Drawing.Point(25, 259);
+            this.lHinta.Name = "lHinta";
+            this.lHinta.Size = new System.Drawing.Size(52, 13);
+            this.lHinta.TabIndex = 20;
+            this.lHinta.Text = "Hinta/vrk";
+            // 
+            // tbHinta
+            // 
+            this.tbHinta.Location = new System.Drawing.Point(28, 272);
+            this.tbHinta.Name = "tbHinta";
+            this.tbHinta.Size = new System.Drawing.Size(167, 20);
+            this.tbHinta.TabIndex = 21;
+            // 
+            // btnLisaa
+            // 
+            this.btnLisaa.Location = new System.Drawing.Point(212, 481);
+            this.btnLisaa.Name = "btnLisaa";
+            this.btnLisaa.Size = new System.Drawing.Size(88, 34);
+            this.btnLisaa.TabIndex = 22;
+            this.btnLisaa.Text = "Lisää";
+            this.btnLisaa.UseVisualStyleBackColor = true;
+            // 
+            // btnMuokkaa
+            // 
+            this.btnMuokkaa.Location = new System.Drawing.Point(306, 481);
+            this.btnMuokkaa.Name = "btnMuokkaa";
+            this.btnMuokkaa.Size = new System.Drawing.Size(88, 34);
+            this.btnMuokkaa.TabIndex = 23;
+            this.btnMuokkaa.Text = "Muokkaa";
+            this.btnMuokkaa.UseVisualStyleBackColor = true;
+            // 
+            // btnPoista
+            // 
+            this.btnPoista.Location = new System.Drawing.Point(400, 481);
+            this.btnPoista.Name = "btnPoista";
+            this.btnPoista.Size = new System.Drawing.Size(88, 34);
+            this.btnPoista.TabIndex = 24;
+            this.btnPoista.Text = "Poista";
+            this.btnPoista.UseVisualStyleBackColor = true;
+            // 
+            // dvgMokit
+            // 
+            this.dvgMokit.AllowUserToOrderColumns = true;
+            this.dvgMokit.AutoGenerateColumns = false;
+            this.dvgMokit.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dvgMokit.DataSource = this.villageNewbiesDatasetBindingSource;
+            this.dvgMokit.Location = new System.Drawing.Point(212, 15);
+            this.dvgMokit.Name = "dvgMokit";
+            this.dvgMokit.Size = new System.Drawing.Size(276, 460);
+            this.dvgMokit.TabIndex = 25;
+            // 
+            // villageNewbiesDataset
+            // 
+            this.villageNewbiesDataset.DataSetName = "VillageNewbiesDataset";
+            this.villageNewbiesDataset.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // villageNewbiesDatasetBindingSource
+            // 
+            this.villageNewbiesDatasetBindingSource.DataSource = this.villageNewbiesDataset;
+            this.villageNewbiesDatasetBindingSource.Position = 0;
+            // 
+            // tbPostiNro
+            // 
+            this.tbPostiNro.Location = new System.Drawing.Point(28, 158);
+            this.tbPostiNro.Name = "tbPostiNro";
+            this.tbPostiNro.Size = new System.Drawing.Size(167, 20);
+            this.tbPostiNro.TabIndex = 26;
+            // 
+            // lPostiNro
+            // 
+            this.lPostiNro.AutoSize = true;
+            this.lPostiNro.Location = new System.Drawing.Point(25, 143);
+            this.lPostiNro.Name = "lPostiNro";
+            this.lPostiNro.Size = new System.Drawing.Size(65, 13);
+            this.lPostiNro.TabIndex = 27;
+            this.lPostiNro.Text = "Postinumero";
             // 
             // Mokki
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(632, 410);
-            this.Controls.Add(this.checkedListBox1);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.label11);
-            this.Controls.Add(this.numericUpDown1);
-            this.Controls.Add(this.label10);
-            this.Controls.Add(this.richTextBox1);
-            this.Controls.Add(this.label9);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.label8);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.label7);
-            this.Controls.Add(this.label6);
+            this.ClientSize = new System.Drawing.Size(507, 527);
+            this.Controls.Add(this.lPostiNro);
+            this.Controls.Add(this.tbPostiNro);
+            this.Controls.Add(this.dvgMokit);
+            this.Controls.Add(this.btnPoista);
+            this.Controls.Add(this.btnMuokkaa);
+            this.Controls.Add(this.btnLisaa);
+            this.Controls.Add(this.tbHinta);
+            this.Controls.Add(this.lHinta);
+            this.Controls.Add(this.label13);
+            this.Controls.Add(this.clbVarutelu);
+            this.Controls.Add(this.btnSeuraava);
+            this.Controls.Add(this.lVarustelu);
+            this.Controls.Add(this.nudHenkiloMaara);
+            this.Controls.Add(this.lHenkiloMaara);
+            this.Controls.Add(this.rtbKuvaus);
+            this.Controls.Add(this.lKuvaus);
+            this.Controls.Add(this.tbOsoite);
+            this.Controls.Add(this.lOsoite);
+            this.Controls.Add(this.tbMokkiName);
+            this.Controls.Add(this.lMokki);
+            this.Controls.Add(this.lPosti_Nro_Muuttuu);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.label4);
+            this.Controls.Add(this.lToimintaAlue);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
+            this.Controls.Add(this.lMokkiID);
             this.Controls.Add(this.label1);
             this.Name = "Mokki";
             this.Text = "Mokki";
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudHenkiloMaara)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dvgMokit)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.villageNewbiesDataset)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.villageNewbiesDatasetBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -230,21 +351,32 @@ namespace Mokkivuokraus
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lMokkiID;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label lToimintaAlue;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.RichTextBox richTextBox1;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.CheckedListBox checkedListBox1;
+        private System.Windows.Forms.Label lPosti_Nro_Muuttuu;
+        private System.Windows.Forms.Label lMokki;
+        private System.Windows.Forms.TextBox tbMokkiName;
+        private System.Windows.Forms.Label lOsoite;
+        private System.Windows.Forms.TextBox tbOsoite;
+        private System.Windows.Forms.Label lKuvaus;
+        private System.Windows.Forms.RichTextBox rtbKuvaus;
+        private System.Windows.Forms.Label lHenkiloMaara;
+        private System.Windows.Forms.NumericUpDown nudHenkiloMaara;
+        private System.Windows.Forms.Label lVarustelu;
+        private System.Windows.Forms.Button btnSeuraava;
+        private System.Windows.Forms.CheckedListBox clbVarutelu;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label lHinta;
+        private System.Windows.Forms.TextBox tbHinta;
+        private System.Windows.Forms.Button btnLisaa;
+        private System.Windows.Forms.Button btnMuokkaa;
+        private System.Windows.Forms.Button btnPoista;
+        private System.Windows.Forms.DataGridView dvgMokit;
+        private System.Windows.Forms.BindingSource villageNewbiesDatasetBindingSource;
+        private VillageNewbiesDataset villageNewbiesDataset;
+        private System.Windows.Forms.TextBox tbPostiNro;
+        private System.Windows.Forms.Label lPostiNro;
     }
 }
