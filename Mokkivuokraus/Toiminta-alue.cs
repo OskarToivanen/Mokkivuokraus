@@ -232,5 +232,17 @@ namespace Mokkivuokraus
         {
             Tyhjenna();
         }
+
+        private void varauksetToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Varaukset varauksetForm = new Varaukset();
+            varauksetForm.Show();
+        }
+
+        private void btnSeuraava_Click(object sender, EventArgs e)
+        {
+            Mokki mokkiForm = new Mokki();
+            mokkiForm.Show();
+        }
     }
 }

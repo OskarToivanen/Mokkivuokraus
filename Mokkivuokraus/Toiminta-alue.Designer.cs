@@ -36,6 +36,8 @@ namespace Mokkivuokraus
             this.mokkiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.asiakasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.palvelutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.lisääToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tyhjennäTiedotToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.tbToimintaAlueID = new System.Windows.Forms.TextBox();
@@ -55,8 +57,8 @@ namespace Mokkivuokraus
             this.dgvPosti = new System.Windows.Forms.DataGridView();
             this.tbPostinumero = new System.Windows.Forms.TextBox();
             this.tbToimipaikka = new System.Windows.Forms.TextBox();
-            this.lisääToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.tyhjennäTiedotToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.varauksetToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnSeuraava = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvToimintaAlue)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
@@ -96,7 +98,8 @@ namespace Mokkivuokraus
             this.avaaToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mokkiToolStripMenuItem,
             this.asiakasToolStripMenuItem,
-            this.palvelutToolStripMenuItem});
+            this.palvelutToolStripMenuItem,
+            this.varauksetToolStripMenuItem});
             this.avaaToolStripMenuItem.Name = "avaaToolStripMenuItem";
             this.avaaToolStripMenuItem.Size = new System.Drawing.Size(56, 24);
             this.avaaToolStripMenuItem.Text = "Avaa";
@@ -104,23 +107,38 @@ namespace Mokkivuokraus
             // mokkiToolStripMenuItem
             // 
             this.mokkiToolStripMenuItem.Name = "mokkiToolStripMenuItem";
-            this.mokkiToolStripMenuItem.Size = new System.Drawing.Size(143, 26);
+            this.mokkiToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.mokkiToolStripMenuItem.Text = "Mökki";
             this.mokkiToolStripMenuItem.Click += new System.EventHandler(this.mökkiToolStripMenuItem_Click);
             // 
             // asiakasToolStripMenuItem
             // 
             this.asiakasToolStripMenuItem.Name = "asiakasToolStripMenuItem";
-            this.asiakasToolStripMenuItem.Size = new System.Drawing.Size(143, 26);
+            this.asiakasToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.asiakasToolStripMenuItem.Text = "Asiakas";
             this.asiakasToolStripMenuItem.Click += new System.EventHandler(this.asiakasToolStripMenuItem_Click);
             // 
             // palvelutToolStripMenuItem
             // 
             this.palvelutToolStripMenuItem.Name = "palvelutToolStripMenuItem";
-            this.palvelutToolStripMenuItem.Size = new System.Drawing.Size(143, 26);
+            this.palvelutToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.palvelutToolStripMenuItem.Text = "Palvelut";
             this.palvelutToolStripMenuItem.Click += new System.EventHandler(this.palvelutToolStripMenuItem_Click);
+            // 
+            // lisääToolStripMenuItem
+            // 
+            this.lisääToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tyhjennäTiedotToolStripMenuItem});
+            this.lisääToolStripMenuItem.Name = "lisääToolStripMenuItem";
+            this.lisääToolStripMenuItem.Size = new System.Drawing.Size(56, 24);
+            this.lisääToolStripMenuItem.Text = "Lisää";
+            // 
+            // tyhjennäTiedotToolStripMenuItem
+            // 
+            this.tyhjennäTiedotToolStripMenuItem.Name = "tyhjennäTiedotToolStripMenuItem";
+            this.tyhjennäTiedotToolStripMenuItem.Size = new System.Drawing.Size(194, 26);
+            this.tyhjennäTiedotToolStripMenuItem.Text = "Tyhjennä tiedot";
+            this.tyhjennäTiedotToolStripMenuItem.Click += new System.EventHandler(this.tyhjennäTiedotToolStripMenuItem_Click);
             // 
             // label1
             // 
@@ -278,26 +296,29 @@ namespace Mokkivuokraus
             this.tbToimipaikka.Size = new System.Drawing.Size(117, 22);
             this.tbToimipaikka.TabIndex = 4;
             // 
-            // lisääToolStripMenuItem
+            // varauksetToolStripMenuItem
             // 
-            this.lisääToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tyhjennäTiedotToolStripMenuItem});
-            this.lisääToolStripMenuItem.Name = "lisääToolStripMenuItem";
-            this.lisääToolStripMenuItem.Size = new System.Drawing.Size(56, 24);
-            this.lisääToolStripMenuItem.Text = "Lisää";
+            this.varauksetToolStripMenuItem.Name = "varauksetToolStripMenuItem";
+            this.varauksetToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.varauksetToolStripMenuItem.Text = "Varaukset";
+            this.varauksetToolStripMenuItem.Click += new System.EventHandler(this.varauksetToolStripMenuItem_Click);
             // 
-            // tyhjennäTiedotToolStripMenuItem
+            // btnSeuraava
             // 
-            this.tyhjennäTiedotToolStripMenuItem.Name = "tyhjennäTiedotToolStripMenuItem";
-            this.tyhjennäTiedotToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
-            this.tyhjennäTiedotToolStripMenuItem.Text = "Tyhjennä tiedot";
-            this.tyhjennäTiedotToolStripMenuItem.Click += new System.EventHandler(this.tyhjennäTiedotToolStripMenuItem_Click);
+            this.btnSeuraava.Location = new System.Drawing.Point(16, 476);
+            this.btnSeuraava.Name = "btnSeuraava";
+            this.btnSeuraava.Size = new System.Drawing.Size(104, 33);
+            this.btnSeuraava.TabIndex = 13;
+            this.btnSeuraava.Text = "Seuraava";
+            this.btnSeuraava.UseVisualStyleBackColor = true;
+            this.btnSeuraava.Click += new System.EventHandler(this.btnSeuraava_Click);
             // 
             // Aloitus
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(888, 553);
+            this.Controls.Add(this.btnSeuraava);
             this.Controls.Add(this.tbToimipaikka);
             this.Controls.Add(this.tbPostinumero);
             this.Controls.Add(this.dgvPosti);
@@ -360,6 +381,8 @@ namespace Mokkivuokraus
         private System.Windows.Forms.TextBox tbToimipaikka;
         private System.Windows.Forms.ToolStripMenuItem lisääToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem tyhjennäTiedotToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem varauksetToolStripMenuItem;
+        private System.Windows.Forms.Button btnSeuraava;
     }
 }
 

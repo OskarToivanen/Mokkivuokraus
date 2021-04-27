@@ -145,6 +145,9 @@
     <EmbeddedResource Include="Toiminta-alue.resx">
       <DependentUpon>Toiminta-alue.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Varaukset.resx">
+      <DependentUpon>Varaukset.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
