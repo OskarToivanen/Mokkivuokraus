@@ -14,20 +14,24 @@ namespace Mokkivuokraus
 {
     public partial class Mokki : Form
     {
-
         SQL tietokanta = new SQL();
         MySqlConnection connection = new MySqlConnection("datasource=localhost;port=3307;" +
             "database=vn;username=root;Password=Ruutti;");
-        int toimintaalueID = 1;
 
         private void Mokki_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'villageNewbiesDataset.toimintaalue' table. You can move, or remove it, as needed.
             this.mokkiTableAdapter.Fill(this.villageNewbiesDataset.mokki);
-            mokkiDGV();
+            
         }
         public Mokki()
         {
             InitializeComponent();
+        }
+
+        public void paivitaDGV()
+        {
+            mokkiDGV();
         }
 
         public void mokkiDGV()
@@ -46,20 +50,85 @@ namespace Mokkivuokraus
             lPosti_Nro_Muuttuu.Text = dgvMokki.CurrentRow.Cells[2].Value.ToString();
         }
 
+        private void dgvMokki_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
         private string kyselytieto = "";
         private void btnLisaa_Click(object sender, EventArgs e)
         {
             string lisaamokki = "";
-            DialogResult result;
+            try
+            {
+                DialogResult result;
+                if (tbToimialue.Text != "" && tbPostiNro.Text != "")
+                {
+                    result = MessageBox.Show("Lisätäänkö uusi mökki",
+                             "Lisää mökki", MessageBoxButtons.YesNo);
+                    if (result == DialogResult.Yes)
+                    {
+                        lisaamokki = "INSERT INTO `vn`.`mokki` (`toimintaalue_id`, `postinro`, `mokkinimi`, `katuosoite`, `kuvaus`, `henkilomaara`, `varustelu`, `hinta`) VALUES('" + tbToimialue.Text + "', '" + tbPostiNro.Text + "', '" + tbMokkiName.Text + "', '" + tbOsoite.Text + "', '" + tbKuvaus.Text + "', '" + tbHenkiloMr.Text + "', '" + tbVarustelu.Text + "', '" + tbHinta.Text + "');SELECT LAST_INSERT_ID();";
+                        kyselytieto = tietokanta.SuoritaKysely(lisaamokki);
+                        KyselynSuoritus(kyselytieto);
+                        mokkiDGV();
+                        Tyhjenna();
+                    }
+                }
+                else if (tbToimialue.Text == "" | tbPostiNro.Text == "")
+                {
+                    result = MessageBox.Show("Täytä tarvittavat kentät",
+                         "Virhe", MessageBoxButtons.OK);
+                }
+            }
+            catch (Exception ex)
+            {
 
-            lisaamokki = "insert into mokki(toimintaalue_id, postinro, mokkinimi, katuosoite, kuvaus, henkilomaara, varustelu) values (" + toimintaalueID + ",'" + tbPostiNro.Text + "','" + tbMokkiName.Text + "','"
-                + tbOsoite.Text + "','" + tbKuvaus.Text + "','" + tbHenkiloMr.Text + "','" + tbVarustelu.Text + "')";
+                MessageBox.Show(ex.Message);
+            }
+ 
+        }
 
-            kyselytieto = tietokanta.SuoritaKysely(lisaamokki);
+        private void btnPaivita_Click(object sender, EventArgs e)
+        {
+            paivitaDGV();
+        }
 
-            KyselynSuoritus(kyselytieto);
-            mokkiDGV();
-            Tyhjenna();
+        private void btnMuokkaa_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnPoista_Click(object sender, EventArgs e)
+        {
+            string poistamokki = "";
+            try
+            {
+                DialogResult result = MessageBox.Show("Haluatko varmasti poistaa tiedot?",
+                    "Poista", MessageBoxButtons.YesNo);
+
+                if (result == DialogResult.Yes)
+                {
+                    if (lMokkiID.Text == dgvMokki.CurrentRow.Cells[0].Value.ToString())
+                    {
+                        poistamokki = "DELETE FROM `vn`.`mokki` WHERE  `mokki_id`="+ lMokkiID.Text +";";
+                        kyselytieto = tietokanta.SuoritaKysely(poistamokki);
+
+                    }
+                  
+                }
+
+                KyselynSuoritus(kyselytieto);
+                mokkiDGV();
+                Tyhjenna();
+
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message);
+            }
+
         }
 
         private void KyselynSuoritus(string tieto)
@@ -81,16 +150,44 @@ namespace Mokkivuokraus
             tbHinta.Text = "";
             tbKuvaus.Text = "";
             tbVarustelu.Text = "";
+            tbToimialue.Text = "";
         }
 
-        private void btnMuokkaa_Click(object sender, EventArgs e)
+        private void btnSeuraava_Click(object sender, EventArgs e)
         {
-
+            Palvelu palveluForm = new Palvelu();
+            palveluForm.Show();
         }
 
-        private void btnPoista_Click(object sender, EventArgs e)
+        //Avaa menun komennot
+        private void toimintaalueToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            
+            Aloitus aloitusForm = new Aloitus();
+            aloitusForm.Show();
+        }
+
+        private void asiakasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Asiakas asiakasForm = new Asiakas();
+            asiakasForm.Show();
+        }
+
+        private void palvelutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Palvelu palveluForm = new Palvelu();
+            palveluForm.Show();
+        }
+
+        private void varauksetToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Varaukset varausForm = new Varaukset();
+            varausForm.Show();
+        }
+
+        //Lisää menun komennot
+        private void tyhjennäTiedotToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Tyhjenna();
         }
     }
 }
