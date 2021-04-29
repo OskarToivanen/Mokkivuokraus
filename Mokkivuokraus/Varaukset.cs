@@ -29,23 +29,33 @@ namespace Mokkivuokraus
             // TODO: This line of code loads data into the 'villageNewbiesDataset.asiakas' table. You can move, or remove it, as needed.
             this.asiakasTableAdapter.Fill(this.villageNewbiesDataset.asiakas);
             varausDGV();
+            laskutDGV();
         }
 
         public void varausDGV()
         {
-            // Päivitetään toimintaAlue datagidview kutsumalla tätä funktiota
+
             string kysely = "SELECT * FROM varaus ORDER BY varaus_id";
             DataTable table = new DataTable();
             MySqlDataAdapter adapter = new MySqlDataAdapter(kysely, connection);
             adapter.Fill(table);
             dgvVaraus.DataSource = table;
+        }
 
+        public void laskutDGV()
+        {
+            string kysely = "SELECT * FROM lasku ORDER BY varaus_id";
+            DataTable table = new DataTable();
+            MySqlDataAdapter adapter = new MySqlDataAdapter(kysely, connection);
+            adapter.Fill(table);
+            dgvLaskut.DataSource = table;
         }
 
         private string kyselytieto = "";
 
         private void btnVaraa_Click(object sender, EventArgs e)
         {
+
             string lisaavaraus = "";
             DateTime datetime = DateTime.Now;
             string varattupaiva = datetime.ToShortDateString();
@@ -69,6 +79,15 @@ namespace Mokkivuokraus
                 MessageBox.Show(tieto);
             else
                 MessageBox.Show(tieto);
+        }
+
+        private void dgvLaskut_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            tbLaskuID.Text = dgvLaskut.CurrentRow.Cells[0].Value.ToString();
+            tbLaskuVarausID.Text = dgvLaskut.CurrentRow.Cells[1].Value.ToString();
+            tbSumma.Text = dgvLaskut.CurrentRow.Cells[2].Value.ToString();
+            tbALV.Text = dgvLaskut.CurrentRow.Cells[3].Value.ToString();
+
         }
     }
 }

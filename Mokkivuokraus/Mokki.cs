@@ -17,16 +17,19 @@ namespace Mokkivuokraus
         SQL tietokanta = new SQL();
         MySqlConnection connection = new MySqlConnection("datasource=localhost;port=3307;" +
             "database=vn;username=root;Password=Ruutti;");
-
+        Varaustiedot varaustiedot;
         private void Mokki_Load(object sender, EventArgs e)
         {
+            
             // TODO: This line of code loads data into the 'villageNewbiesDataset.toimintaalue' table. You can move, or remove it, as needed.
             this.mokkiTableAdapter.Fill(this.villageNewbiesDataset.mokki);
-            
+            mokkiDGV();
+           
         }
         public Mokki()
         {
             InitializeComponent();
+           
         }
 
         public void paivitaDGV()
@@ -155,6 +158,7 @@ namespace Mokkivuokraus
 
         private void btnSeuraava_Click(object sender, EventArgs e)
         {
+            varaustiedot.mokkiID = int.Parse(lMokkiID.Text);
             Palvelu palveluForm = new Palvelu();
             palveluForm.Show();
         }
