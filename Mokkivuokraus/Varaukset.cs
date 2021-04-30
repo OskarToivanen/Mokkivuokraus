@@ -19,6 +19,8 @@ namespace Mokkivuokraus
         MySqlConnection connection = new MySqlConnection("datasource=localhost;port=3307;" +
             "database=vn;username=root;Password=Ruutti;");
 
+        Varaustiedot varaustiedot = new Varaustiedot();
+
         public Varaukset()
         {
             InitializeComponent();
@@ -30,6 +32,8 @@ namespace Mokkivuokraus
             this.asiakasTableAdapter.Fill(this.villageNewbiesDataset.asiakas);
             varausDGV();
             laskutDGV();
+           
+
         }
 
         public void varausDGV()
@@ -40,6 +44,7 @@ namespace Mokkivuokraus
             MySqlDataAdapter adapter = new MySqlDataAdapter(kysely, connection);
             adapter.Fill(table);
             dgvVaraus.DataSource = table;
+            tbMokkiID.Text = varaustiedot.mokkiID.ToString();
         }
 
         public void laskutDGV()
@@ -55,19 +60,21 @@ namespace Mokkivuokraus
 
         private void btnVaraa_Click(object sender, EventArgs e)
         {
-
             string lisaavaraus = "";
-            DateTime datetime = DateTime.Now;
-            string varattupaiva = datetime.ToShortDateString();
+            string paivat = DateTime.Now.ToString("yyyy-MM-dd");
+            string alkupaiva = dtpVarattuAlkupvm.Value.Date.ToString("yyyy-MM-dd");
+            string loppupaiva = dtpVarattuLoppupvm.Value.Date.ToString("yyyy-MM-dd");
+            
 
             lisaavaraus = "insert into varaus(asiakas_id, mokki_mokki_id, varattu_pvm, vahvistus_pvm," +
                 "varattu_alkupvm, varattu_loppupvm)values(" +
-                    tbAsiakasID.Text + ",'" + tbMokkiID.Text + "','" + varattupaiva + "','"
-                    + varattupaiva + "','" + dtpVarattuAlkupvm.Text + "','" +
-                    dtpVarattuLoppupvm.Text + "')";
+                    tbAsiakasID.Text + ",'" + tbMokkiID.Text + "','" + paivat + "','"
+                    + paivat + "','" + alkupaiva + "','" +
+                    loppupaiva + "')";
 
             kyselytieto = tietokanta.SuoritaKysely(lisaavaraus);
             KyselynSuoritus(kyselytieto);
+            varausDGV();
         }
 
         private void KyselynSuoritus(string tieto)
@@ -88,6 +95,13 @@ namespace Mokkivuokraus
             tbSumma.Text = dgvLaskut.CurrentRow.Cells[2].Value.ToString();
             tbALV.Text = dgvLaskut.CurrentRow.Cells[3].Value.ToString();
 
+        }
+
+        
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            varausDGV();
         }
     }
 }

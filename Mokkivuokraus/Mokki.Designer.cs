@@ -374,9 +374,9 @@ namespace Mokkivuokraus
             this.lMokkiID.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lMokkiID.Name = "lMokkiID";
             this.lMokkiID.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.lMokkiID.Size = new System.Drawing.Size(16, 17);
+            this.lMokkiID.Size = new System.Drawing.Size(20, 17);
             this.lMokkiID.TabIndex = 34;
-            this.lMokkiID.Text = "0";
+            this.lMokkiID.Text = "0 ";
             // 
             // label6
             // 

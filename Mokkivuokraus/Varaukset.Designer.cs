@@ -35,7 +35,6 @@ namespace Mokkivuokraus
             this.asiakasTableAdapter = new Mokkivuokraus.VillageNewbiesDatasetTableAdapters.asiakasTableAdapter();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabVaraukset = new System.Windows.Forms.TabPage();
-            this.tabLaskut = new System.Windows.Forms.TabPage();
             this.label6 = new System.Windows.Forms.Label();
             this.tbVarausID = new System.Windows.Forms.TextBox();
             this.btnVaraa = new System.Windows.Forms.Button();
@@ -49,22 +48,23 @@ namespace Mokkivuokraus
             this.dtpVarattuLoppupvm = new System.Windows.Forms.DateTimePicker();
             this.dtpVarattuAlkupvm = new System.Windows.Forms.DateTimePicker();
             this.dgvVaraus = new System.Windows.Forms.DataGridView();
-            this.label7 = new System.Windows.Forms.Label();
-            this.dgvLaskut = new System.Windows.Forms.DataGridView();
-            this.tbLaskuID = new System.Windows.Forms.TextBox();
-            this.tbLaskuVarausID = new System.Windows.Forms.TextBox();
-            this.tbSumma = new System.Windows.Forms.TextBox();
-            this.tbALV = new System.Windows.Forms.TextBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
+            this.tabLaskut = new System.Windows.Forms.TabPage();
             this.label11 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.tbALV = new System.Windows.Forms.TextBox();
+            this.tbSumma = new System.Windows.Forms.TextBox();
+            this.tbLaskuVarausID = new System.Windows.Forms.TextBox();
+            this.tbLaskuID = new System.Windows.Forms.TextBox();
+            this.dgvLaskut = new System.Windows.Forms.DataGridView();
+            this.label7 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.villageNewbiesDataset)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.asiakasBindingSource)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabVaraukset.SuspendLayout();
-            this.tabLaskut.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvVaraus)).BeginInit();
+            this.tabLaskut.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLaskut)).BeginInit();
             this.SuspendLayout();
             // 
@@ -116,26 +116,6 @@ namespace Mokkivuokraus
             this.tabVaraukset.TabIndex = 0;
             this.tabVaraukset.Text = "Varaukset";
             // 
-            // tabLaskut
-            // 
-            this.tabLaskut.BackColor = System.Drawing.SystemColors.Control;
-            this.tabLaskut.Controls.Add(this.label11);
-            this.tabLaskut.Controls.Add(this.label10);
-            this.tabLaskut.Controls.Add(this.label9);
-            this.tabLaskut.Controls.Add(this.label8);
-            this.tabLaskut.Controls.Add(this.tbALV);
-            this.tabLaskut.Controls.Add(this.tbSumma);
-            this.tabLaskut.Controls.Add(this.tbLaskuVarausID);
-            this.tabLaskut.Controls.Add(this.tbLaskuID);
-            this.tabLaskut.Controls.Add(this.dgvLaskut);
-            this.tabLaskut.Controls.Add(this.label7);
-            this.tabLaskut.Location = new System.Drawing.Point(4, 25);
-            this.tabLaskut.Name = "tabLaskut";
-            this.tabLaskut.Padding = new System.Windows.Forms.Padding(3);
-            this.tabLaskut.Size = new System.Drawing.Size(1002, 430);
-            this.tabLaskut.TabIndex = 1;
-            this.tabLaskut.Text = "Laskut";
-            // 
             // label6
             // 
             this.label6.AutoSize = true;
@@ -161,6 +141,7 @@ namespace Mokkivuokraus
             this.btnVaraa.TabIndex = 24;
             this.btnVaraa.Text = "Varaa";
             this.btnVaraa.UseVisualStyleBackColor = true;
+            this.btnVaraa.Click += new System.EventHandler(this.btnVaraa_Click);
             // 
             // label5
             // 
@@ -225,6 +206,7 @@ namespace Mokkivuokraus
             // dtpVarattuLoppupvm
             // 
             this.dtpVarattuLoppupvm.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpVarattuLoppupvm.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.dtpVarattuLoppupvm.Location = new System.Drawing.Point(17, 375);
             this.dtpVarattuLoppupvm.Name = "dtpVarattuLoppupvm";
             this.dtpVarattuLoppupvm.Size = new System.Drawing.Size(114, 22);
@@ -251,15 +233,90 @@ namespace Mokkivuokraus
             this.dgvVaraus.Size = new System.Drawing.Size(672, 375);
             this.dgvVaraus.TabIndex = 14;
             // 
-            // label7
+            // tabLaskut
             // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(19, 15);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(82, 29);
-            this.label7.TabIndex = 0;
-            this.label7.Text = "Laskut";
+            this.tabLaskut.BackColor = System.Drawing.SystemColors.Control;
+            this.tabLaskut.Controls.Add(this.label11);
+            this.tabLaskut.Controls.Add(this.label10);
+            this.tabLaskut.Controls.Add(this.label9);
+            this.tabLaskut.Controls.Add(this.label8);
+            this.tabLaskut.Controls.Add(this.tbALV);
+            this.tabLaskut.Controls.Add(this.tbSumma);
+            this.tabLaskut.Controls.Add(this.tbLaskuVarausID);
+            this.tabLaskut.Controls.Add(this.tbLaskuID);
+            this.tabLaskut.Controls.Add(this.dgvLaskut);
+            this.tabLaskut.Controls.Add(this.label7);
+            this.tabLaskut.Location = new System.Drawing.Point(4, 25);
+            this.tabLaskut.Name = "tabLaskut";
+            this.tabLaskut.Padding = new System.Windows.Forms.Padding(3);
+            this.tabLaskut.Size = new System.Drawing.Size(1002, 430);
+            this.tabLaskut.TabIndex = 1;
+            this.tabLaskut.Text = "Laskut";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(24, 319);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(34, 17);
+            this.label11.TabIndex = 9;
+            this.label11.Text = "ALV";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(24, 238);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(55, 17);
+            this.label10.TabIndex = 8;
+            this.label10.Text = "Summa";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(24, 152);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(70, 17);
+            this.label9.TabIndex = 7;
+            this.label9.Text = "Varaus ID";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(24, 63);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(63, 17);
+            this.label8.TabIndex = 6;
+            this.label8.Text = "Lasku ID";
+            // 
+            // tbALV
+            // 
+            this.tbALV.Location = new System.Drawing.Point(24, 354);
+            this.tbALV.Name = "tbALV";
+            this.tbALV.Size = new System.Drawing.Size(100, 22);
+            this.tbALV.TabIndex = 5;
+            // 
+            // tbSumma
+            // 
+            this.tbSumma.Location = new System.Drawing.Point(24, 277);
+            this.tbSumma.Name = "tbSumma";
+            this.tbSumma.Size = new System.Drawing.Size(100, 22);
+            this.tbSumma.TabIndex = 4;
+            // 
+            // tbLaskuVarausID
+            // 
+            this.tbLaskuVarausID.Location = new System.Drawing.Point(24, 194);
+            this.tbLaskuVarausID.Name = "tbLaskuVarausID";
+            this.tbLaskuVarausID.Size = new System.Drawing.Size(100, 22);
+            this.tbLaskuVarausID.TabIndex = 3;
+            // 
+            // tbLaskuID
+            // 
+            this.tbLaskuID.Enabled = false;
+            this.tbLaskuID.Location = new System.Drawing.Point(24, 105);
+            this.tbLaskuID.Name = "tbLaskuID";
+            this.tbLaskuID.Size = new System.Drawing.Size(100, 22);
+            this.tbLaskuID.TabIndex = 2;
             // 
             // dgvLaskut
             // 
@@ -272,70 +329,15 @@ namespace Mokkivuokraus
             this.dgvLaskut.TabIndex = 1;
             this.dgvLaskut.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvLaskut_CellContentClick);
             // 
-            // tbLaskuID
+            // label7
             // 
-            this.tbLaskuID.Enabled = false;
-            this.tbLaskuID.Location = new System.Drawing.Point(24, 105);
-            this.tbLaskuID.Name = "tbLaskuID";
-            this.tbLaskuID.Size = new System.Drawing.Size(100, 22);
-            this.tbLaskuID.TabIndex = 2;
-            // 
-            // tbLaskuVarausID
-            // 
-            this.tbLaskuVarausID.Location = new System.Drawing.Point(24, 194);
-            this.tbLaskuVarausID.Name = "tbLaskuVarausID";
-            this.tbLaskuVarausID.Size = new System.Drawing.Size(100, 22);
-            this.tbLaskuVarausID.TabIndex = 3;
-            // 
-            // tbSumma
-            // 
-            this.tbSumma.Location = new System.Drawing.Point(24, 277);
-            this.tbSumma.Name = "tbSumma";
-            this.tbSumma.Size = new System.Drawing.Size(100, 22);
-            this.tbSumma.TabIndex = 4;
-            // 
-            // tbALV
-            // 
-            this.tbALV.Location = new System.Drawing.Point(24, 354);
-            this.tbALV.Name = "tbALV";
-            this.tbALV.Size = new System.Drawing.Size(100, 22);
-            this.tbALV.TabIndex = 5;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(24, 63);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(63, 17);
-            this.label8.TabIndex = 6;
-            this.label8.Text = "Lasku ID";
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(24, 152);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(70, 17);
-            this.label9.TabIndex = 7;
-            this.label9.Text = "Varaus ID";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(24, 238);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(55, 17);
-            this.label10.TabIndex = 8;
-            this.label10.Text = "Summa";
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(24, 319);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(34, 17);
-            this.label11.TabIndex = 9;
-            this.label11.Text = "ALV";
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(19, 15);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(82, 29);
+            this.label7.TabIndex = 0;
+            this.label7.Text = "Laskut";
             // 
             // Varaukset
             // 
@@ -351,9 +353,9 @@ namespace Mokkivuokraus
             this.tabControl1.ResumeLayout(false);
             this.tabVaraukset.ResumeLayout(false);
             this.tabVaraukset.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvVaraus)).EndInit();
             this.tabLaskut.ResumeLayout(false);
             this.tabLaskut.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvVaraus)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLaskut)).EndInit();
             this.ResumeLayout(false);
 

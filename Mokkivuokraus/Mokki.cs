@@ -17,7 +17,7 @@ namespace Mokkivuokraus
         SQL tietokanta = new SQL();
         MySqlConnection connection = new MySqlConnection("datasource=localhost;port=3307;" +
             "database=vn;username=root;Password=Ruutti;");
-        Varaustiedot varaustiedot;
+        Varaustiedot varaustiedot = new Varaustiedot();
         private void Mokki_Load(object sender, EventArgs e)
         {
             
@@ -159,8 +159,8 @@ namespace Mokkivuokraus
         private void btnSeuraava_Click(object sender, EventArgs e)
         {
             varaustiedot.mokkiID = int.Parse(lMokkiID.Text);
-            Palvelu palveluForm = new Palvelu();
-            palveluForm.Show();
+            Varaukset varausForm = new Varaukset();
+            varausForm.Show();
         }
 
         //Avaa menun komennot

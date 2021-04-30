@@ -14,7 +14,7 @@ namespace Mokkivuokraus
 {
     public partial class Aloitus : Form
     {
-        Varaustiedot varaustiedot;
+        Varaustiedot varaustiedot = new Varaustiedot();
         SQL tietokanta = new SQL();
         MySqlConnection connection = new MySqlConnection("datasource=localhost;port=3307;" +
             "database=vn;username=root;Password=Ruutti;");

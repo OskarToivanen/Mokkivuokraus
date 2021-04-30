@@ -13,5 +13,7 @@ namespace Mokkivuokraus
         public int asiakasID;
         public int varausID;
         public string toiminta_alue;
+
+      
     }
 }
