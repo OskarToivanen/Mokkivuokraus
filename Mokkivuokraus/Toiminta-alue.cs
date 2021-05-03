@@ -14,7 +14,7 @@ namespace Mokkivuokraus
 {
     public partial class Aloitus : Form
     {
-        Varaustiedot varaustiedot = new Varaustiedot();
+        
         SQL tietokanta = new SQL();
         MySqlConnection connection = new MySqlConnection("datasource=localhost;port=3307;" +
             "database=vn;username=root;Password=Ruutti;");
@@ -239,18 +239,21 @@ namespace Mokkivuokraus
             Varaukset varauksetForm = new Varaukset();
             varauksetForm.Show();
         }
+        private string toimintanimi;
 
+        // Viedään mokkiformille tieto miltä alueelta mokit etsitään
         private void btnSeuraava_Click(object sender, EventArgs e)
         {
             if (tbToimintaAlueID.Text == "")
                 MessageBox.Show("Alue ID virheellinen");
             else
             {
-                varaustiedot.toiminta_alueID = int.Parse(tbToimintaAlueID.Text);
-                varaustiedot.toiminta_alue = tbToimintaAlue.Text;
+                toimintanimi = tbToimintaAlue.Text;
                 Mokki mokkiForm = new Mokki();
+                mokkiForm.toimintaNimi(toimintanimi);
                 mokkiForm.Show();
             }
         }
+        
     }
 }

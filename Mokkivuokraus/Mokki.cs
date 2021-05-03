@@ -14,16 +14,17 @@ namespace Mokkivuokraus
 {
     public partial class Mokki : Form
     {
+        
         SQL tietokanta = new SQL();
         MySqlConnection connection = new MySqlConnection("datasource=localhost;port=3307;" +
             "database=vn;username=root;Password=Ruutti;");
-        Varaustiedot varaustiedot = new Varaustiedot();
         private void Mokki_Load(object sender, EventArgs e)
         {
             
             // TODO: This line of code loads data into the 'villageNewbiesDataset.toimintaalue' table. You can move, or remove it, as needed.
             this.mokkiTableAdapter.Fill(this.villageNewbiesDataset.mokki);
             mokkiDGV();
+            
            
         }
         public Mokki()
@@ -39,11 +40,18 @@ namespace Mokkivuokraus
 
         public void mokkiDGV()
         {
-            string kysely = "SELECT * FROM mokki ORDER BY mokki_id";
+            string kysely = "";
+            if (toimialue == null)
+                kysely = "SELECT * FROM mokki ORDER BY mokki_id";
+            else // etsitään mokit toiminta-alueen perusteella
+                kysely = "SELECT * FROM mokki WHERE toimintaalue_id IN " +
+                    "(SELECT toimintaalue_id FROM toimintaalue WHERE nimi ='" + toimialue + "')";
+                
             DataTable table = new DataTable();
             MySqlDataAdapter adapter = new MySqlDataAdapter(kysely, connection);
             adapter.Fill(table);
             dgvMokki.DataSource = table;
+            tbToimialue.Text = toimialue;
         }
 
         private void dvgMokki_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -158,7 +166,7 @@ namespace Mokkivuokraus
 
         private void btnSeuraava_Click(object sender, EventArgs e)
         {
-            varaustiedot.mokkiID = int.Parse(lMokkiID.Text);
+            
             Varaukset varausForm = new Varaukset();
             varausForm.Show();
         }
@@ -192,6 +200,13 @@ namespace Mokkivuokraus
         private void tyhjennäTiedotToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Tyhjenna();
+        }
+
+        // Tuodaan toiminta-alue formilta tieto mikä toiminta-alue kyseessä ja etsitään mökit sen perusteella
+        private string toimialue;
+        public void toimintaNimi(string nimi)
+        {
+            toimialue = nimi.ToString();
         }
     }
 }

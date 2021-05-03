@@ -19,7 +19,7 @@ namespace Mokkivuokraus
         MySqlConnection connection = new MySqlConnection("datasource=localhost;port=3307;" +
             "database=vn;username=root;Password=Ruutti;");
 
-        Varaustiedot varaustiedot = new Varaustiedot();
+        
 
         public Varaukset()
         {
@@ -44,7 +44,7 @@ namespace Mokkivuokraus
             MySqlDataAdapter adapter = new MySqlDataAdapter(kysely, connection);
             adapter.Fill(table);
             dgvVaraus.DataSource = table;
-            tbMokkiID.Text = varaustiedot.mokkiID.ToString();
+            
         }
 
         public void laskutDGV()

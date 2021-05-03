@@ -122,7 +122,6 @@
     <Compile Include="Varaukset.Designer.cs">
       <DependentUpon>Varaukset.cs</DependentUpon>
     </Compile>
-    <Compile Include="Varaustiedot.cs" />
     <Compile Include="VillageNewbiesDataset.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
