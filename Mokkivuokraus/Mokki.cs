@@ -59,6 +59,7 @@ namespace Mokkivuokraus
             lMokkiID.Text = dgvMokki.CurrentRow.Cells[0].Value.ToString();
             lToimintaAlue.Text = dgvMokki.CurrentRow.Cells[1].Value.ToString();
             lPosti_Nro_Muuttuu.Text = dgvMokki.CurrentRow.Cells[2].Value.ToString();
+            tbHinta.Text = dgvMokki.CurrentRow.Cells[8].Value.ToString();
         }
 
         private void dgvMokki_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -163,12 +164,24 @@ namespace Mokkivuokraus
             tbVarustelu.Text = "";
             tbToimialue.Text = "";
         }
+        private string mokkinumero;
+        private string mokkihinta;
+        private string toimialue;
+
+        // Tuodaan toiminta-alue formilta tieto mikä toiminta-alue kyseessä ja etsitään mökit sen perusteella
+        public void toimintaNimi(string nimi)
+        {
+            toimialue = nimi.ToString();
+        }
 
         private void btnSeuraava_Click(object sender, EventArgs e)
         {
-            
-            Varaukset varausForm = new Varaukset();
-            varausForm.Show();
+            mokkinumero = lMokkiID.Text;
+            mokkihinta = tbHinta.Text;
+            Asiakas asiakasForm = new Asiakas();
+            asiakasForm.mokkiHinta(mokkihinta);
+            asiakasForm.mokkiID(mokkinumero);
+            asiakasForm.Show();
         }
 
         //Avaa menun komennot
@@ -202,11 +215,7 @@ namespace Mokkivuokraus
             Tyhjenna();
         }
 
-        // Tuodaan toiminta-alue formilta tieto mikä toiminta-alue kyseessä ja etsitään mökit sen perusteella
-        private string toimialue;
-        public void toimintaNimi(string nimi)
-        {
-            toimialue = nimi.ToString();
-        }
+       
+        
     }
 }

@@ -35,6 +35,7 @@ namespace Mokkivuokraus
             this.asiakasTableAdapter = new Mokkivuokraus.VillageNewbiesDatasetTableAdapters.asiakasTableAdapter();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabVaraukset = new System.Windows.Forms.TabPage();
+            this.button1 = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.tbVarausID = new System.Windows.Forms.TextBox();
             this.btnVaraa = new System.Windows.Forms.Button();
@@ -48,24 +49,36 @@ namespace Mokkivuokraus
             this.dtpVarattuLoppupvm = new System.Windows.Forms.DateTimePicker();
             this.dtpVarattuAlkupvm = new System.Windows.Forms.DateTimePicker();
             this.dgvVaraus = new System.Windows.Forms.DataGridView();
-            this.tabLaskut = new System.Windows.Forms.TabPage();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.tbALV = new System.Windows.Forms.TextBox();
-            this.tbSumma = new System.Windows.Forms.TextBox();
-            this.tbLaskuVarausID = new System.Windows.Forms.TextBox();
-            this.tbLaskuID = new System.Windows.Forms.TextBox();
-            this.dgvLaskut = new System.Windows.Forms.DataGridView();
-            this.label7 = new System.Windows.Forms.Label();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.btnLisaaPalvelu = new System.Windows.Forms.Button();
+            this.tbLukumaara = new System.Windows.Forms.TextBox();
+            this.label15 = new System.Windows.Forms.Label();
+            this.tbPalveluID = new System.Windows.Forms.TextBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.tbVarausPalveluVarausID = new System.Windows.Forms.TextBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.dgvVarauksenPalvelut = new System.Windows.Forms.DataGridView();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.avaaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mokkiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.asiakasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.palvelutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toimintaalueToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.lisääToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tyhjennäTiedotToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.tsslKello = new System.Windows.Forms.ToolStripStatusLabel();
+            this.timer1Kellonaika = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.villageNewbiesDataset)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.asiakasBindingSource)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabVaraukset.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvVaraus)).BeginInit();
-            this.tabLaskut.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvLaskut)).BeginInit();
+            this.tabPage1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvVarauksenPalvelut)).BeginInit();
+            this.menuStrip1.SuspendLayout();
+            this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // villageNewbiesDataset
@@ -84,18 +97,21 @@ namespace Mokkivuokraus
             // 
             // tabControl1
             // 
+            this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.tabControl1.Controls.Add(this.tabVaraukset);
-            this.tabControl1.Controls.Add(this.tabLaskut);
-            this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabControl1.Location = new System.Drawing.Point(0, 0);
+            this.tabControl1.Controls.Add(this.tabPage1);
+            this.tabControl1.Location = new System.Drawing.Point(0, 33);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1010, 459);
+            this.tabControl1.Size = new System.Drawing.Size(1012, 449);
             this.tabControl1.TabIndex = 0;
             // 
             // tabVaraukset
             // 
             this.tabVaraukset.BackColor = System.Drawing.SystemColors.Control;
+            this.tabVaraukset.Controls.Add(this.button1);
             this.tabVaraukset.Controls.Add(this.label6);
             this.tabVaraukset.Controls.Add(this.tbVarausID);
             this.tabVaraukset.Controls.Add(this.btnVaraa);
@@ -112,9 +128,19 @@ namespace Mokkivuokraus
             this.tabVaraukset.Location = new System.Drawing.Point(4, 25);
             this.tabVaraukset.Name = "tabVaraukset";
             this.tabVaraukset.Padding = new System.Windows.Forms.Padding(3);
-            this.tabVaraukset.Size = new System.Drawing.Size(1002, 430);
+            this.tabVaraukset.Size = new System.Drawing.Size(1004, 420);
             this.tabVaraukset.TabIndex = 0;
             this.tabVaraukset.Text = "Varaukset";
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(231, 28);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(107, 54);
+            this.button1.TabIndex = 34;
+            this.button1.Text = "Lisää varauspalvelu";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // label6
             // 
@@ -127,7 +153,6 @@ namespace Mokkivuokraus
             // 
             // tbVarausID
             // 
-            this.tbVarausID.Enabled = false;
             this.tbVarausID.Location = new System.Drawing.Point(14, 83);
             this.tbVarausID.Name = "tbVarausID";
             this.tbVarausID.Size = new System.Drawing.Size(114, 22);
@@ -135,7 +160,7 @@ namespace Mokkivuokraus
             // 
             // btnVaraa
             // 
-            this.btnVaraa.Location = new System.Drawing.Point(183, 77);
+            this.btnVaraa.Location = new System.Drawing.Point(231, 118);
             this.btnVaraa.Name = "btnVaraa";
             this.btnVaraa.Size = new System.Drawing.Size(105, 40);
             this.btnVaraa.TabIndex = 24;
@@ -226,124 +251,207 @@ namespace Mokkivuokraus
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvVaraus.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvVaraus.Location = new System.Drawing.Point(319, 47);
+            this.dgvVaraus.Location = new System.Drawing.Point(401, 6);
             this.dgvVaraus.Name = "dgvVaraus";
             this.dgvVaraus.RowHeadersWidth = 51;
             this.dgvVaraus.RowTemplate.Height = 24;
-            this.dgvVaraus.Size = new System.Drawing.Size(672, 375);
+            this.dgvVaraus.Size = new System.Drawing.Size(600, 406);
             this.dgvVaraus.TabIndex = 14;
+            this.dgvVaraus.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvVaraus_CellClick);
             // 
-            // tabLaskut
+            // tabPage1
             // 
-            this.tabLaskut.BackColor = System.Drawing.SystemColors.Control;
-            this.tabLaskut.Controls.Add(this.label11);
-            this.tabLaskut.Controls.Add(this.label10);
-            this.tabLaskut.Controls.Add(this.label9);
-            this.tabLaskut.Controls.Add(this.label8);
-            this.tabLaskut.Controls.Add(this.tbALV);
-            this.tabLaskut.Controls.Add(this.tbSumma);
-            this.tabLaskut.Controls.Add(this.tbLaskuVarausID);
-            this.tabLaskut.Controls.Add(this.tbLaskuID);
-            this.tabLaskut.Controls.Add(this.dgvLaskut);
-            this.tabLaskut.Controls.Add(this.label7);
-            this.tabLaskut.Location = new System.Drawing.Point(4, 25);
-            this.tabLaskut.Name = "tabLaskut";
-            this.tabLaskut.Padding = new System.Windows.Forms.Padding(3);
-            this.tabLaskut.Size = new System.Drawing.Size(1002, 430);
-            this.tabLaskut.TabIndex = 1;
-            this.tabLaskut.Text = "Laskut";
+            this.tabPage1.BackColor = System.Drawing.SystemColors.Control;
+            this.tabPage1.Controls.Add(this.btnLisaaPalvelu);
+            this.tabPage1.Controls.Add(this.tbLukumaara);
+            this.tabPage1.Controls.Add(this.label15);
+            this.tabPage1.Controls.Add(this.tbPalveluID);
+            this.tabPage1.Controls.Add(this.label14);
+            this.tabPage1.Controls.Add(this.label13);
+            this.tabPage1.Controls.Add(this.tbVarausPalveluVarausID);
+            this.tabPage1.Controls.Add(this.label12);
+            this.tabPage1.Controls.Add(this.dgvVarauksenPalvelut);
+            this.tabPage1.Location = new System.Drawing.Point(4, 25);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(1004, 420);
+            this.tabPage1.TabIndex = 2;
+            this.tabPage1.Text = "Varauksen palvelut";
             // 
-            // label11
+            // btnLisaaPalvelu
             // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(24, 319);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(34, 17);
-            this.label11.TabIndex = 9;
-            this.label11.Text = "ALV";
+            this.btnLisaaPalvelu.Location = new System.Drawing.Point(285, 100);
+            this.btnLisaaPalvelu.Name = "btnLisaaPalvelu";
+            this.btnLisaaPalvelu.Size = new System.Drawing.Size(111, 37);
+            this.btnLisaaPalvelu.TabIndex = 8;
+            this.btnLisaaPalvelu.Text = "Lisää";
+            this.btnLisaaPalvelu.UseVisualStyleBackColor = true;
+            this.btnLisaaPalvelu.Click += new System.EventHandler(this.btnLisaaPalvelu_Click);
             // 
-            // label10
+            // tbLukumaara
             // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(24, 238);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(55, 17);
-            this.label10.TabIndex = 8;
-            this.label10.Text = "Summa";
+            this.tbLukumaara.Location = new System.Drawing.Point(46, 306);
+            this.tbLukumaara.Name = "tbLukumaara";
+            this.tbLukumaara.Size = new System.Drawing.Size(100, 22);
+            this.tbLukumaara.TabIndex = 7;
             // 
-            // label9
+            // label15
             // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(24, 152);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(70, 17);
-            this.label9.TabIndex = 7;
-            this.label9.Text = "Varaus ID";
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(43, 262);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(79, 17);
+            this.label15.TabIndex = 6;
+            this.label15.Text = "Lukumäärä";
             // 
-            // label8
+            // tbPalveluID
             // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(24, 63);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(63, 17);
-            this.label8.TabIndex = 6;
-            this.label8.Text = "Lasku ID";
+            this.tbPalveluID.Location = new System.Drawing.Point(46, 210);
+            this.tbPalveluID.Name = "tbPalveluID";
+            this.tbPalveluID.Size = new System.Drawing.Size(100, 22);
+            this.tbPalveluID.TabIndex = 5;
             // 
-            // tbALV
+            // label14
             // 
-            this.tbALV.Location = new System.Drawing.Point(24, 354);
-            this.tbALV.Name = "tbALV";
-            this.tbALV.Size = new System.Drawing.Size(100, 22);
-            this.tbALV.TabIndex = 5;
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(43, 166);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(71, 17);
+            this.label14.TabIndex = 4;
+            this.label14.Text = "Palvelu ID";
             // 
-            // tbSumma
+            // label13
             // 
-            this.tbSumma.Location = new System.Drawing.Point(24, 277);
-            this.tbSumma.Name = "tbSumma";
-            this.tbSumma.Size = new System.Drawing.Size(100, 22);
-            this.tbSumma.TabIndex = 4;
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.Location = new System.Drawing.Point(8, 15);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(215, 29);
+            this.label13.TabIndex = 3;
+            this.label13.Text = "Varauksen palvelut";
             // 
-            // tbLaskuVarausID
+            // tbVarausPalveluVarausID
             // 
-            this.tbLaskuVarausID.Location = new System.Drawing.Point(24, 194);
-            this.tbLaskuVarausID.Name = "tbLaskuVarausID";
-            this.tbLaskuVarausID.Size = new System.Drawing.Size(100, 22);
-            this.tbLaskuVarausID.TabIndex = 3;
+            this.tbVarausPalveluVarausID.Location = new System.Drawing.Point(46, 115);
+            this.tbVarausPalveluVarausID.Name = "tbVarausPalveluVarausID";
+            this.tbVarausPalveluVarausID.Size = new System.Drawing.Size(100, 22);
+            this.tbVarausPalveluVarausID.TabIndex = 2;
             // 
-            // tbLaskuID
+            // label12
             // 
-            this.tbLaskuID.Enabled = false;
-            this.tbLaskuID.Location = new System.Drawing.Point(24, 105);
-            this.tbLaskuID.Name = "tbLaskuID";
-            this.tbLaskuID.Size = new System.Drawing.Size(100, 22);
-            this.tbLaskuID.TabIndex = 2;
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(43, 71);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(70, 17);
+            this.label12.TabIndex = 1;
+            this.label12.Text = "Varaus ID";
             // 
-            // dgvLaskut
+            // dgvVarauksenPalvelut
             // 
-            this.dgvLaskut.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvLaskut.Location = new System.Drawing.Point(280, 15);
-            this.dgvLaskut.Name = "dgvLaskut";
-            this.dgvLaskut.RowHeadersWidth = 51;
-            this.dgvLaskut.RowTemplate.Height = 24;
-            this.dgvLaskut.Size = new System.Drawing.Size(705, 386);
-            this.dgvLaskut.TabIndex = 1;
-            this.dgvLaskut.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvLaskut_CellContentClick);
+            this.dgvVarauksenPalvelut.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgvVarauksenPalvelut.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvVarauksenPalvelut.Location = new System.Drawing.Point(464, 6);
+            this.dgvVarauksenPalvelut.Name = "dgvVarauksenPalvelut";
+            this.dgvVarauksenPalvelut.RowHeadersWidth = 51;
+            this.dgvVarauksenPalvelut.RowTemplate.Height = 24;
+            this.dgvVarauksenPalvelut.Size = new System.Drawing.Size(532, 408);
+            this.dgvVarauksenPalvelut.TabIndex = 0;
             // 
-            // label7
+            // menuStrip1
             // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(19, 15);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(82, 29);
-            this.label7.TabIndex = 0;
-            this.label7.Text = "Laskut";
+            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.avaaToolStripMenuItem,
+            this.lisääToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(1012, 28);
+            this.menuStrip1.TabIndex = 2;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // avaaToolStripMenuItem
+            // 
+            this.avaaToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mokkiToolStripMenuItem,
+            this.asiakasToolStripMenuItem,
+            this.palvelutToolStripMenuItem,
+            this.toimintaalueToolStripMenuItem});
+            this.avaaToolStripMenuItem.Name = "avaaToolStripMenuItem";
+            this.avaaToolStripMenuItem.Size = new System.Drawing.Size(56, 24);
+            this.avaaToolStripMenuItem.Text = "Avaa";
+            // 
+            // mokkiToolStripMenuItem
+            // 
+            this.mokkiToolStripMenuItem.Name = "mokkiToolStripMenuItem";
+            this.mokkiToolStripMenuItem.Size = new System.Drawing.Size(184, 26);
+            this.mokkiToolStripMenuItem.Text = "Mökki";
+            this.mokkiToolStripMenuItem.Click += new System.EventHandler(this.mokkiToolStripMenuItem_Click);
+            // 
+            // asiakasToolStripMenuItem
+            // 
+            this.asiakasToolStripMenuItem.Name = "asiakasToolStripMenuItem";
+            this.asiakasToolStripMenuItem.Size = new System.Drawing.Size(184, 26);
+            this.asiakasToolStripMenuItem.Text = "Asiakas";
+            this.asiakasToolStripMenuItem.Click += new System.EventHandler(this.asiakasToolStripMenuItem_Click);
+            // 
+            // palvelutToolStripMenuItem
+            // 
+            this.palvelutToolStripMenuItem.Name = "palvelutToolStripMenuItem";
+            this.palvelutToolStripMenuItem.Size = new System.Drawing.Size(184, 26);
+            this.palvelutToolStripMenuItem.Text = "Palvelut";
+            this.palvelutToolStripMenuItem.Click += new System.EventHandler(this.palvelutToolStripMenuItem_Click);
+            // 
+            // toimintaalueToolStripMenuItem
+            // 
+            this.toimintaalueToolStripMenuItem.Name = "toimintaalueToolStripMenuItem";
+            this.toimintaalueToolStripMenuItem.Size = new System.Drawing.Size(184, 26);
+            this.toimintaalueToolStripMenuItem.Text = "Toiminta-alue";
+            this.toimintaalueToolStripMenuItem.Click += new System.EventHandler(this.toimintaalueToolStripMenuItem_Click);
+            // 
+            // lisääToolStripMenuItem
+            // 
+            this.lisääToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tyhjennäTiedotToolStripMenuItem});
+            this.lisääToolStripMenuItem.Name = "lisääToolStripMenuItem";
+            this.lisääToolStripMenuItem.Size = new System.Drawing.Size(56, 24);
+            this.lisääToolStripMenuItem.Text = "Lisää";
+            // 
+            // tyhjennäTiedotToolStripMenuItem
+            // 
+            this.tyhjennäTiedotToolStripMenuItem.Name = "tyhjennäTiedotToolStripMenuItem";
+            this.tyhjennäTiedotToolStripMenuItem.Size = new System.Drawing.Size(194, 26);
+            this.tyhjennäTiedotToolStripMenuItem.Text = "Tyhjennä tiedot";
+            // 
+            // statusStrip1
+            // 
+            this.statusStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsslKello});
+            this.statusStrip1.Location = new System.Drawing.Point(0, 485);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(1012, 26);
+            this.statusStrip1.TabIndex = 12;
+            this.statusStrip1.Text = "statusStrip1";
+            // 
+            // tsslKello
+            // 
+            this.tsslKello.Name = "tsslKello";
+            this.tsslKello.Size = new System.Drawing.Size(41, 20);
+            this.tsslKello.Text = "        ";
+            // 
+            // timer1Kellonaika
+            // 
+            this.timer1Kellonaika.Tick += new System.EventHandler(this.timer1Kellonaika_Tick);
             // 
             // Varaukset
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1010, 459);
+            this.ClientSize = new System.Drawing.Size(1012, 511);
+            this.Controls.Add(this.statusStrip1);
+            this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.tabControl1);
             this.Name = "Varaukset";
             this.Text = "Varaukset";
@@ -354,10 +462,15 @@ namespace Mokkivuokraus
             this.tabVaraukset.ResumeLayout(false);
             this.tabVaraukset.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvVaraus)).EndInit();
-            this.tabLaskut.ResumeLayout(false);
-            this.tabLaskut.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvLaskut)).EndInit();
+            this.tabPage1.ResumeLayout(false);
+            this.tabPage1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvVarauksenPalvelut)).EndInit();
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
+            this.statusStrip1.ResumeLayout(false);
+            this.statusStrip1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -380,16 +493,27 @@ namespace Mokkivuokraus
         private System.Windows.Forms.DateTimePicker dtpVarattuLoppupvm;
         private System.Windows.Forms.DateTimePicker dtpVarattuAlkupvm;
         private System.Windows.Forms.DataGridView dgvVaraus;
-        private System.Windows.Forms.TabPage tabLaskut;
-        private System.Windows.Forms.DataGridView dgvLaskut;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox tbALV;
-        private System.Windows.Forms.TextBox tbSumma;
-        private System.Windows.Forms.TextBox tbLaskuVarausID;
-        private System.Windows.Forms.TextBox tbLaskuID;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem avaaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem mokkiToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem asiakasToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem palvelutToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem lisääToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem tyhjennäTiedotToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem toimintaalueToolStripMenuItem;
+        private System.Windows.Forms.StatusStrip statusStrip1;
+        private System.Windows.Forms.ToolStripStatusLabel tsslKello;
+        private System.Windows.Forms.Timer timer1Kellonaika;
+        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.TextBox tbLukumaara;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.TextBox tbPalveluID;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.TextBox tbVarausPalveluVarausID;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.DataGridView dgvVarauksenPalvelut;
+        private System.Windows.Forms.Button btnLisaaPalvelu;
+        private System.Windows.Forms.Button button1;
     }
 }

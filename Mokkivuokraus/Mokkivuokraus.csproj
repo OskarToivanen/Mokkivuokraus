@@ -133,6 +133,9 @@
     <EmbeddedResource Include="Mokki.resx">
       <DependentUpon>Mokki.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Palvelu.resx">
+      <DependentUpon>Palvelu.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

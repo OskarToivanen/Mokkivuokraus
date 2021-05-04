@@ -59,7 +59,7 @@ namespace Mokkivuokraus
         private void dvgAsiakas_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             lblAsiakasId.Text = dgvAsiakas.CurrentRow.Cells[0].Value.ToString();
-            
+
         }
 
         private string kyselytieto = "";
@@ -113,7 +113,7 @@ namespace Mokkivuokraus
             tbLahiosoite.Text = "";
             tbSahkoposti.Text = "";
             tbPuhelinnumero.Text = "";
-            
+
         }
 
         private void btnPaivita_Click(object sender, EventArgs e)
@@ -151,5 +151,31 @@ namespace Mokkivuokraus
                 MessageBox.Show(ex.Message);
             }
         }
+        private string asiakasnumero;
+        private void btnSeuraava_Click(object sender, EventArgs e)
+        {
+
+            asiakasnumero = lblAsiakasId.Text;
+            Palvelu palveluform = new Palvelu();
+            palveluform.mokkiID(mokkinumero);
+            palveluform.mokkiHinta(mokkihinta);
+            palveluform.asiakasID(asiakasnumero);
+            palveluform.Show();
+        }
+
+        private string mokkinumero;
+        private string mokkihinta;
+
+        public void mokkiID(string mokki)
+        {
+            mokkinumero = mokki.ToString();
+        }
+
+        public void mokkiHinta(string hinta)
+        {
+            mokkihinta = hinta.ToString();
+        }
+
+
     }
 }
