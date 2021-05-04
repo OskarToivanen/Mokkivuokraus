@@ -59,6 +59,7 @@ namespace Mokkivuokraus
             this.tbPostinumero = new System.Windows.Forms.TextBox();
             this.tbToimipaikka = new System.Windows.Forms.TextBox();
             this.btnSeuraava = new System.Windows.Forms.Button();
+            this.laskutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dgvToimintaAlue)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
@@ -99,7 +100,8 @@ namespace Mokkivuokraus
             this.mokkiToolStripMenuItem,
             this.asiakasToolStripMenuItem,
             this.palvelutToolStripMenuItem,
-            this.varauksetToolStripMenuItem});
+            this.varauksetToolStripMenuItem,
+            this.laskutToolStripMenuItem});
             this.avaaToolStripMenuItem.Name = "avaaToolStripMenuItem";
             this.avaaToolStripMenuItem.Size = new System.Drawing.Size(56, 24);
             this.avaaToolStripMenuItem.Text = "Avaa";
@@ -107,28 +109,28 @@ namespace Mokkivuokraus
             // mokkiToolStripMenuItem
             // 
             this.mokkiToolStripMenuItem.Name = "mokkiToolStripMenuItem";
-            this.mokkiToolStripMenuItem.Size = new System.Drawing.Size(155, 26);
+            this.mokkiToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.mokkiToolStripMenuItem.Text = "Mökki";
             this.mokkiToolStripMenuItem.Click += new System.EventHandler(this.mökkiToolStripMenuItem_Click);
             // 
             // asiakasToolStripMenuItem
             // 
             this.asiakasToolStripMenuItem.Name = "asiakasToolStripMenuItem";
-            this.asiakasToolStripMenuItem.Size = new System.Drawing.Size(155, 26);
+            this.asiakasToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.asiakasToolStripMenuItem.Text = "Asiakas";
             this.asiakasToolStripMenuItem.Click += new System.EventHandler(this.asiakasToolStripMenuItem_Click);
             // 
             // palvelutToolStripMenuItem
             // 
             this.palvelutToolStripMenuItem.Name = "palvelutToolStripMenuItem";
-            this.palvelutToolStripMenuItem.Size = new System.Drawing.Size(155, 26);
+            this.palvelutToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.palvelutToolStripMenuItem.Text = "Palvelut";
             this.palvelutToolStripMenuItem.Click += new System.EventHandler(this.palvelutToolStripMenuItem_Click);
             // 
             // varauksetToolStripMenuItem
             // 
             this.varauksetToolStripMenuItem.Name = "varauksetToolStripMenuItem";
-            this.varauksetToolStripMenuItem.Size = new System.Drawing.Size(155, 26);
+            this.varauksetToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.varauksetToolStripMenuItem.Text = "Varaukset";
             this.varauksetToolStripMenuItem.Click += new System.EventHandler(this.varauksetToolStripMenuItem_Click);
             // 
@@ -313,6 +315,13 @@ namespace Mokkivuokraus
             this.btnSeuraava.UseVisualStyleBackColor = true;
             this.btnSeuraava.Click += new System.EventHandler(this.btnSeuraava_Click);
             // 
+            // laskutToolStripMenuItem
+            // 
+            this.laskutToolStripMenuItem.Name = "laskutToolStripMenuItem";
+            this.laskutToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.laskutToolStripMenuItem.Text = "Laskut";
+            this.laskutToolStripMenuItem.Click += new System.EventHandler(this.laskutToolStripMenuItem_Click);
+            // 
             // Aloitus
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -383,6 +392,7 @@ namespace Mokkivuokraus
         private System.Windows.Forms.ToolStripMenuItem tyhjennäTiedotToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem varauksetToolStripMenuItem;
         private System.Windows.Forms.Button btnSeuraava;
+        private System.Windows.Forms.ToolStripMenuItem laskutToolStripMenuItem;
     }
 }
 

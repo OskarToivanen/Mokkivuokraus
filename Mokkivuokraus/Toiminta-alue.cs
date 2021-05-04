@@ -254,6 +254,11 @@ namespace Mokkivuokraus
                 mokkiForm.Show();
             }
         }
-        
+
+        private void laskutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Laskut laskutform = new Laskut();
+            laskutform.Show();
+        }
     }
 }

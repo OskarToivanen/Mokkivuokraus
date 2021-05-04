@@ -105,6 +105,7 @@ namespace Mokkivuokraus
         private string mokkihinta;
         private string palveluhinta;
         private string palveluhinta_alv;
+        private string varausnumero;
         
         public void asiakasID(string asiakas)
         {
@@ -167,18 +168,6 @@ namespace Mokkivuokraus
             tbMokkiID.Text = dgvVaraus.CurrentRow.Cells[2].Value.ToString();
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            if (tbVarausID.Text == "")
-                MessageBox.Show("Varaustieto puuttuu", "Virhe");
-            else
-            {
-                tbVarausPalveluVarausID.Text = tbVarausID.Text;
-                tbPalveluID.Text = palvelunumero;
-                tabControl1.SelectedIndex = 1;
-            }
-        }
-
         private void btnLisaaPalvelu_Click(object sender, EventArgs e)
         {
             string lisaavarauksenpalvelut = "";
@@ -201,6 +190,26 @@ namespace Mokkivuokraus
                 KyselynSuoritus(kyselytieto);
                 varauksenPalvelutDGV();
             }
+        }
+
+        private void btnLisaaPalveluVaraukseen_Click(object sender, EventArgs e)
+        {
+            if (tbVarausID.Text == "")
+                MessageBox.Show("Varaustieto puuttuu", "Virhe");
+            else
+            {
+                tbVarausPalveluVarausID.Text = tbVarausID.Text;
+                tbPalveluID.Text = palvelunumero;
+                tabControl1.SelectedIndex = 1;
+            }
+        }
+
+        private void btnLisaaLasku_Click(object sender, EventArgs e)
+        {
+            varausnumero = tbVarausID.Text;
+            Laskut laskutform = new Laskut();
+            laskutform.varausID(varausnumero);
+            laskutform.Show();
         }
     }
 }

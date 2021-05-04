@@ -156,6 +156,7 @@ namespace Mokkivuokraus
         {
 
             asiakasnumero = lblAsiakasId.Text;
+            ActiveForm.Close();
             Palvelu palveluform = new Palvelu();
             palveluform.mokkiID(mokkinumero);
             palveluform.mokkiHinta(mokkihinta);

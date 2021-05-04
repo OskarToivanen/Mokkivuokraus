@@ -178,6 +178,7 @@ namespace Mokkivuokraus
         {
             mokkinumero = lMokkiID.Text;
             mokkihinta = tbHinta.Text;
+            ActiveForm.Close();
             Asiakas asiakasForm = new Asiakas();
             asiakasForm.mokkiHinta(mokkihinta);
             asiakasForm.mokkiID(mokkinumero);
