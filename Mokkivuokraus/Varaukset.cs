@@ -42,7 +42,7 @@ namespace Mokkivuokraus
         public void varausDGV()
         {
 
-            string kysely = "SELECT * FROM varaus ORDER BY varaus_id";
+            string kysely = "select * from varaukset";//"SELECT * FROM varaus ORDER BY varaus_id";
             DataTable table = new DataTable();
             MySqlDataAdapter adapter = new MySqlDataAdapter(kysely, connection);
             adapter.Fill(table);
@@ -68,8 +68,6 @@ namespace Mokkivuokraus
             string paivat = DateTime.Now.ToString("yyyy-MM-dd");
             string alkupaiva = dtpVarattuAlkupvm.Value.Date.ToString("yyyy-MM-dd");
             string loppupaiva = dtpVarattuLoppupvm.Value.Date.ToString("yyyy-MM-dd");
-           
-
             try
             {
                 DialogResult result = MessageBox.Show("Lisäänkö palvelu?", "", MessageBoxButtons.YesNo);
@@ -221,9 +219,26 @@ namespace Mokkivuokraus
 
             varausnumero = tbVarausID.Text;
             Laskut laskutform = new Laskut();
-            laskutform.mokkiHinta(mokkihinta, palveluhinta);
+           // laskutform.mokkiHinta(mokkihinta, palveluhinta);
             laskutform.varausID(varausnumero);
             laskutform.Show();
+        }
+
+        private void btnPoista_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Haluatko varmasti poistaa tiedot?",
+                   "Poista", MessageBoxButtons.YesNo);
+            string poistavaraus = "";
+            if (result == DialogResult.Yes)
+            {
+                if (tbVarausID.Text != "")
+                poistavaraus = "DELETE FROM varaus WHERE varaus_id ="
+                            + int.Parse(tbVarausID.Text);
+                
+            }
+            kyselytieto = tietokanta.SuoritaKysely(poistavaraus);
+            KyselynSuoritus(kyselytieto);
+            varausDGV();
         }
     }
 }

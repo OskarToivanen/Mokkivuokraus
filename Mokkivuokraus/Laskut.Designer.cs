@@ -236,6 +236,7 @@ namespace Mokkivuokraus
             this.btnLisaa.TabIndex = 25;
             this.btnLisaa.Text = "Lisää";
             this.btnLisaa.UseVisualStyleBackColor = true;
+            this.btnLisaa.Click += new System.EventHandler(this.btnLisaa_Click);
             // 
             // Laskut
             // 

@@ -35,6 +35,7 @@ namespace Mokkivuokraus
             this.asiakasTableAdapter = new Mokkivuokraus.VillageNewbiesDatasetTableAdapters.asiakasTableAdapter();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tpVaraukset = new System.Windows.Forms.TabPage();
+            this.btnLisaaLasku = new System.Windows.Forms.Button();
             this.btnLisaaPalveluVaraukseen = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.tbVarausID = new System.Windows.Forms.TextBox();
@@ -70,7 +71,7 @@ namespace Mokkivuokraus
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.tsslKello = new System.Windows.Forms.ToolStripStatusLabel();
             this.timer1Kellonaika = new System.Windows.Forms.Timer(this.components);
-            this.btnLisaaLasku = new System.Windows.Forms.Button();
+            this.btnPoista = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.villageNewbiesDataset)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.asiakasBindingSource)).BeginInit();
             this.tabControl1.SuspendLayout();
@@ -112,6 +113,7 @@ namespace Mokkivuokraus
             // tpVaraukset
             // 
             this.tpVaraukset.BackColor = System.Drawing.SystemColors.Control;
+            this.tpVaraukset.Controls.Add(this.btnPoista);
             this.tpVaraukset.Controls.Add(this.btnLisaaLasku);
             this.tpVaraukset.Controls.Add(this.btnLisaaPalveluVaraukseen);
             this.tpVaraukset.Controls.Add(this.label6);
@@ -133,6 +135,16 @@ namespace Mokkivuokraus
             this.tpVaraukset.Size = new System.Drawing.Size(1004, 420);
             this.tpVaraukset.TabIndex = 0;
             this.tpVaraukset.Text = "Varaukset";
+            // 
+            // btnLisaaLasku
+            // 
+            this.btnLisaaLasku.Location = new System.Drawing.Point(231, 245);
+            this.btnLisaaLasku.Name = "btnLisaaLasku";
+            this.btnLisaaLasku.Size = new System.Drawing.Size(120, 52);
+            this.btnLisaaLasku.TabIndex = 35;
+            this.btnLisaaLasku.Text = "Lisää lasku";
+            this.btnLisaaLasku.UseVisualStyleBackColor = true;
+            this.btnLisaaLasku.Click += new System.EventHandler(this.btnLisaaLasku_Click);
             // 
             // btnLisaaPalveluVaraukseen
             // 
@@ -244,6 +256,7 @@ namespace Mokkivuokraus
             // 
             this.dtpVarattuAlkupvm.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtpVarattuAlkupvm.Location = new System.Drawing.Point(17, 296);
+            this.dtpVarattuAlkupvm.MaxDate = new System.DateTime(9998, 12, 1, 0, 0, 0, 0);
             this.dtpVarattuAlkupvm.Name = "dtpVarattuAlkupvm";
             this.dtpVarattuAlkupvm.Size = new System.Drawing.Size(114, 22);
             this.dtpVarattuAlkupvm.TabIndex = 15;
@@ -449,15 +462,15 @@ namespace Mokkivuokraus
             // 
             this.timer1Kellonaika.Tick += new System.EventHandler(this.timer1Kellonaika_Tick);
             // 
-            // btnLisaaLasku
+            // btnPoista
             // 
-            this.btnLisaaLasku.Location = new System.Drawing.Point(231, 245);
-            this.btnLisaaLasku.Name = "btnLisaaLasku";
-            this.btnLisaaLasku.Size = new System.Drawing.Size(120, 52);
-            this.btnLisaaLasku.TabIndex = 35;
-            this.btnLisaaLasku.Text = "Lisää lasku";
-            this.btnLisaaLasku.UseVisualStyleBackColor = true;
-            this.btnLisaaLasku.Click += new System.EventHandler(this.btnLisaaLasku_Click);
+            this.btnPoista.Location = new System.Drawing.Point(231, 336);
+            this.btnPoista.Name = "btnPoista";
+            this.btnPoista.Size = new System.Drawing.Size(120, 46);
+            this.btnPoista.TabIndex = 36;
+            this.btnPoista.Text = "Poista";
+            this.btnPoista.UseVisualStyleBackColor = true;
+            this.btnPoista.Click += new System.EventHandler(this.btnPoista_Click);
             // 
             // Varaukset
             // 
@@ -530,5 +543,6 @@ namespace Mokkivuokraus
         private System.Windows.Forms.Button btnLisaaPalvelu;
         private System.Windows.Forms.Button btnLisaaPalveluVaraukseen;
         private System.Windows.Forms.Button btnLisaaLasku;
+        private System.Windows.Forms.Button btnPoista;
     }
 }

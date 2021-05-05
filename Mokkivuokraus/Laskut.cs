@@ -37,7 +37,7 @@ namespace Mokkivuokraus
         public void laskutDGV()
         {
 
-            string kysely = "select * from hinnat"; //"SELECT * FROM lasku ORDER BY lasku_id";
+            string kysely = "SELECT * FROM lasku ORDER BY lasku_id";
             DataTable table = new DataTable();
             MySqlDataAdapter adapter = new MySqlDataAdapter(kysely, connection);
             adapter.Fill(table);
@@ -59,6 +59,27 @@ namespace Mokkivuokraus
             mokkihinta = hinta.ToString();
             palveluhinta = palvelu.ToString();
 
+        }
+        string kyselytieto;
+        private void btnLisaa_Click(object sender, EventArgs e)
+        {
+           string lisaalasku = "insert into lasku(varaus_id, summa, alv) " +
+                "values(" + int.Parse(tbVarausID.Text) + "," + double.Parse(tbSumma.Text)
+                + "," + double.Parse(tbAlv.Text) + ")";
+            kyselytieto = tietokanta.SuoritaKysely(lisaalasku);
+            KyselynSuoritus(kyselytieto);
+            laskutDGV();
+        }
+
+        private void KyselynSuoritus(string tieto)
+        {
+            // tuodaan SQL-luokasta tieto onko kysely onnistunut vai ei
+            if (tieto == "Kysely suoritettu")
+                MessageBox.Show(tieto);
+            else if (tieto == "Kyselyä ei suoritettu")
+                MessageBox.Show(tieto);
+            else
+                MessageBox.Show(tieto);
         }
     }
 }
