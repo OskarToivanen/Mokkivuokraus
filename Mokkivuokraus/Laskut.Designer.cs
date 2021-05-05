@@ -106,25 +106,25 @@ namespace Mokkivuokraus
             // mokkiToolStripMenuItem
             // 
             this.mokkiToolStripMenuItem.Name = "mokkiToolStripMenuItem";
-            this.mokkiToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.mokkiToolStripMenuItem.Size = new System.Drawing.Size(184, 26);
             this.mokkiToolStripMenuItem.Text = "Mökki";
             // 
             // asiakasToolStripMenuItem
             // 
             this.asiakasToolStripMenuItem.Name = "asiakasToolStripMenuItem";
-            this.asiakasToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.asiakasToolStripMenuItem.Size = new System.Drawing.Size(184, 26);
             this.asiakasToolStripMenuItem.Text = "Asiakas";
             // 
             // palvelutToolStripMenuItem
             // 
             this.palvelutToolStripMenuItem.Name = "palvelutToolStripMenuItem";
-            this.palvelutToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.palvelutToolStripMenuItem.Size = new System.Drawing.Size(184, 26);
             this.palvelutToolStripMenuItem.Text = "Palvelut";
             // 
             // toimintaalueToolStripMenuItem
             // 
             this.toimintaalueToolStripMenuItem.Name = "toimintaalueToolStripMenuItem";
-            this.toimintaalueToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.toimintaalueToolStripMenuItem.Size = new System.Drawing.Size(184, 26);
             this.toimintaalueToolStripMenuItem.Text = "Toiminta-alue";
             // 
             // lisääToolStripMenuItem
@@ -200,6 +200,7 @@ namespace Mokkivuokraus
             // 
             // tbLaskuID
             // 
+            this.tbLaskuID.Enabled = false;
             this.tbLaskuID.Location = new System.Drawing.Point(38, 146);
             this.tbLaskuID.Name = "tbLaskuID";
             this.tbLaskuID.Size = new System.Drawing.Size(100, 22);
@@ -207,6 +208,7 @@ namespace Mokkivuokraus
             // 
             // tbVarausID
             // 
+            this.tbVarausID.Enabled = false;
             this.tbVarausID.Location = new System.Drawing.Point(38, 210);
             this.tbVarausID.Name = "tbVarausID";
             this.tbVarausID.Size = new System.Drawing.Size(100, 22);

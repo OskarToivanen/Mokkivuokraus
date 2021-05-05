@@ -17,7 +17,10 @@ namespace Mokkivuokraus
         SQL tietokanta = new SQL();
         MySqlConnection connection = new MySqlConnection("datasource=localhost;port=3307;" +
             "database=vn;username=root;Password=Ruutti;");
+
         private string varausnumero;
+        private string mokkihinta;
+        private string palveluhinta;
 
         public Laskut()
         {
@@ -27,13 +30,14 @@ namespace Mokkivuokraus
         private void Laskut_Load(object sender, EventArgs e)
         {
             laskutDGV();
+            tbVarausID.Text = varausnumero;
             timer1KellonAika.Start();
         }
 
         public void laskutDGV()
         {
 
-            string kysely = "SELECT * FROM lasku ORDER BY lasku_id";
+            string kysely = "select * from hinnat"; //"SELECT * FROM lasku ORDER BY lasku_id";
             DataTable table = new DataTable();
             MySqlDataAdapter adapter = new MySqlDataAdapter(kysely, connection);
             adapter.Fill(table);
@@ -48,6 +52,13 @@ namespace Mokkivuokraus
         public void varausID(string varaus)
         {
             varausnumero = varaus.ToString();
+        }
+
+        public void mokkiHinta(string hinta, string palvelu)
+        {
+            mokkihinta = hinta.ToString();
+            palveluhinta = palvelu.ToString();
+
         }
     }
 }

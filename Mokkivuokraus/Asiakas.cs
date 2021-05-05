@@ -152,16 +152,24 @@ namespace Mokkivuokraus
             }
         }
         private string asiakasnumero;
+        private string toimintaalueID;
         private void btnSeuraava_Click(object sender, EventArgs e)
         {
-
+            Varaukset varausform = new Varaukset();
             asiakasnumero = lblAsiakasId.Text;
+            varausform.asiakasID(asiakasnumero);
+            varausform.mokkiID(mokkinumero);
             ActiveForm.Close();
-            Palvelu palveluform = new Palvelu();
-            palveluform.mokkiID(mokkinumero);
-            palveluform.mokkiHinta(mokkihinta);
-            palveluform.asiakasID(asiakasnumero);
-            palveluform.Show();
+            varausform.Show();
+
+            //asiakasnumero = lblAsiakasId.Text;
+            //ActiveForm.Close();
+            //Palvelu palveluform = new Palvelu();
+            //palveluform.mokkiID(mokkinumero);
+            //palveluform.mokkiHinta(mokkihinta);
+            //palveluform.asiakasID(asiakasnumero);
+            //palveluform.toimintaID(toimintaalueID);
+            //palveluform.Show();
         }
 
         private string mokkinumero;
@@ -175,6 +183,11 @@ namespace Mokkivuokraus
         public void mokkiHinta(string hinta)
         {
             mokkihinta = hinta.ToString();
+        }
+
+        public void toimintaID(string toimiID)
+        {
+            toimintaalueID = toimiID.ToString();
         }
 
 

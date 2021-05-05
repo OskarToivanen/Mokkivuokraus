@@ -31,8 +31,12 @@ namespace Mokkivuokraus
 
         public void palveluDGV()
         {
-
-            string kysely = "SELECT * FROM palvelu ORDER BY palvelu_id";
+            string kysely = "";
+            if(toimintaalueID == null)
+                kysely = "SELECT * FROM palvelu ORDER BY palvelu_id";
+            else
+            kysely = "SELECT * FROM palvelu WHERE toimintaalue_id IN " +
+                    "(SELECT toimintaalue_id FROM mokki WHERE toimintaalue_id ='" + toimintaalueID + "')";
             DataTable table = new DataTable();
             MySqlDataAdapter adapter = new MySqlDataAdapter(kysely, connection);
             adapter.Fill(table);
@@ -46,13 +50,14 @@ namespace Mokkivuokraus
             textBox2.Text = dgvPalvelu.CurrentRow.Cells[4].Value.ToString();
             textBox3.Text = dgvPalvelu.CurrentRow.Cells[5].Value.ToString();
         }
-
+        
         private string palvelunumero;
         private string asiakasnumero;
         private string mokkinumero;
         private string mokkihinta;
         private string palveluhinta;
         private string palveluhintaalv;
+        private string toimintaalueID;
         private void button1_Click(object sender, EventArgs e)
         {
             palvelunumero = textBox1.Text;
@@ -79,6 +84,11 @@ namespace Mokkivuokraus
         public void mokkiHinta(string hinta)
         {
             mokkihinta = hinta.ToString();
+        }
+
+        public void toimintaID(string toimiID)
+        {
+            toimintaalueID = toimiID.ToString();
         }
     }
 }

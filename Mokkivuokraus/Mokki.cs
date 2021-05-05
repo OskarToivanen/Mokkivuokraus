@@ -167,11 +167,18 @@ namespace Mokkivuokraus
         private string mokkinumero;
         private string mokkihinta;
         private string toimialue;
+        private string toimintaalueID;
 
         // Tuodaan toiminta-alue formilta tieto mikä toiminta-alue kyseessä ja etsitään mökit sen perusteella
         public void toimintaNimi(string nimi)
         {
             toimialue = nimi.ToString();
+            
+        }
+
+        public void toimintaID(string toimiID)
+        {
+            toimintaalueID = toimiID.ToString();
         }
 
         private void btnSeuraava_Click(object sender, EventArgs e)
@@ -180,6 +187,7 @@ namespace Mokkivuokraus
             mokkihinta = tbHinta.Text;
             ActiveForm.Close();
             Asiakas asiakasForm = new Asiakas();
+            asiakasForm.toimintaID(toimintaalueID);
             asiakasForm.mokkiHinta(mokkihinta);
             asiakasForm.mokkiID(mokkinumero);
             asiakasForm.Show();

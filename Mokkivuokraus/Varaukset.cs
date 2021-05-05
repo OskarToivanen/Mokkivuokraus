@@ -68,13 +68,22 @@ namespace Mokkivuokraus
             string paivat = DateTime.Now.ToString("yyyy-MM-dd");
             string alkupaiva = dtpVarattuAlkupvm.Value.Date.ToString("yyyy-MM-dd");
             string loppupaiva = dtpVarattuLoppupvm.Value.Date.ToString("yyyy-MM-dd");
+           
+
             try
             {
-                lisaavaraus = "insert into varaus(asiakas_id, mokki_mokki_id, varattu_pvm, vahvistus_pvm," +
-                    "varattu_alkupvm, varattu_loppupvm)VALUES(" +
-                        int.Parse(tbAsiakasID.Text) + ",'" + int.Parse(tbMokkiID.Text) + "','" + paivat + "','"
-                        + paivat + "','" + alkupaiva + "','" +
-                        loppupaiva + "')";
+                DialogResult result = MessageBox.Show("Lisäänkö palvelu?", "", MessageBoxButtons.YesNo);
+                if (result == DialogResult.Yes)
+                {
+                    lisaavaraus = "insert into varaus(asiakas_id, mokki_mokki_id, varattu_pvm, vahvistus_pvm," +
+                        "varattu_alkupvm, varattu_loppupvm)VALUES(" +
+                            int.Parse(tbAsiakasID.Text) + ",'" + int.Parse(tbMokkiID.Text) + "','" + paivat + "','"
+                            + paivat + "','" + alkupaiva + "','" +
+                            loppupaiva + "')";
+                    kyselytieto = tietokanta.SuoritaKysely(lisaavaraus);
+                    Palvelu palveluform = new Palvelu();
+                    palveluform.Show();
+                }
             }
             catch(Exception ex)
             {
@@ -82,9 +91,12 @@ namespace Mokkivuokraus
             }
             finally
             {
-                kyselytieto = tietokanta.SuoritaKysely(lisaavaraus);
-                KyselynSuoritus(kyselytieto);
+                
+                //kyselytieto = tietokanta.SuoritaKysely(lisaavaraus);
+                //KyselynSuoritus(kyselytieto);
                 varausDGV();
+
+                
             }
         }
 
@@ -206,8 +218,10 @@ namespace Mokkivuokraus
 
         private void btnLisaaLasku_Click(object sender, EventArgs e)
         {
+
             varausnumero = tbVarausID.Text;
             Laskut laskutform = new Laskut();
+            laskutform.mokkiHinta(mokkihinta, palveluhinta);
             laskutform.varausID(varausnumero);
             laskutform.Show();
         }

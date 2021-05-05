@@ -240,6 +240,7 @@ namespace Mokkivuokraus
             varauksetForm.Show();
         }
         private string toimintanimi;
+        private string toimintaID;
 
         // Viedään mokkiformille tieto miltä alueelta mokit etsitään
         private void btnSeuraava_Click(object sender, EventArgs e)
@@ -248,9 +249,11 @@ namespace Mokkivuokraus
                 MessageBox.Show("Alue ID virheellinen");
             else
             {
+                toimintaID = tbToimintaAlueID.Text;
                 toimintanimi = tbToimintaAlue.Text;
                 Mokki mokkiForm = new Mokki();
                 mokkiForm.toimintaNimi(toimintanimi);
+                mokkiForm.toimintaID(toimintaID);
                 mokkiForm.Show();
             }
         }
