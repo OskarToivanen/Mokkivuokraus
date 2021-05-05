@@ -28,14 +28,14 @@ namespace Mokkivuokraus
 
         private void Varaukset_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'villageNewbiesDataset.mokki' table. You can move, or remove it, as needed.
+            this.mokkiTableAdapter.Fill(this.villageNewbiesDataset.mokki);
             // TODO: This line of code loads data into the 'villageNewbiesDataset.asiakas' table. You can move, or remove it, as needed.
             this.asiakasTableAdapter.Fill(this.villageNewbiesDataset.asiakas);
             varausDGV();
            
             varauksenPalvelutDGV();
             timer1Kellonaika.Start();
-            tbMokkiID.Text = mokkinumero;
-            tbAsiakasID.Text = asiakasnumero;
            
         }
 
@@ -70,18 +70,16 @@ namespace Mokkivuokraus
             string loppupaiva = dtpVarattuLoppupvm.Value.Date.ToString("yyyy-MM-dd");
             try
             {
-                DialogResult result = MessageBox.Show("Lisäänkö palvelu?", "", MessageBoxButtons.YesNo);
-                if (result == DialogResult.Yes)
-                {
+     
                     lisaavaraus = "insert into varaus(asiakas_id, mokki_mokki_id, varattu_pvm, vahvistus_pvm," +
                         "varattu_alkupvm, varattu_loppupvm)VALUES(" +
-                            int.Parse(tbAsiakasID.Text) + ",'" + int.Parse(tbMokkiID.Text) + "','" + paivat + "','"
+                            int.Parse(tbMokkiID.Text) + ",'" + int.Parse(tbAsiakas.Text) + "','" + paivat + "','"
                             + paivat + "','" + alkupaiva + "','" +
                             loppupaiva + "')";
                     kyselytieto = tietokanta.SuoritaKysely(lisaavaraus);
                     Palvelu palveluform = new Palvelu();
                     palveluform.Show();
-                }
+                
             }
             catch(Exception ex)
             {
@@ -107,39 +105,6 @@ namespace Mokkivuokraus
                 MessageBox.Show(tieto);
             else
                 MessageBox.Show(tieto);
-        }
-
-        private string mokkinumero;
-        private string asiakasnumero;
-        private string palvelunumero;
-        private string mokkihinta;
-        private string palveluhinta;
-        private string palveluhinta_alv;
-        private string varausnumero;
-        
-        public void asiakasID(string asiakas)
-        {
-            asiakasnumero = asiakas.ToString();
-        }
-
-        public void mokkiID(string mokki)
-        {
-            mokkinumero = mokki.ToString();
-        }
-        public void mokkiHinta(string hinta)
-        {
-            mokkihinta = hinta.ToString();
-        }
-
-        public void palveluID(string palvelu)
-        {
-            palvelunumero = palvelu.ToString();
-        }
-
-        public void palveluHinta(string phinta, string hinta_alv)
-        {
-            palveluhinta = phinta.ToString();
-            palveluhinta_alv = hinta_alv.ToString();
         }
 
         private void mokkiToolStripMenuItem_Click(object sender, EventArgs e)
@@ -174,8 +139,8 @@ namespace Mokkivuokraus
         private void dgvVaraus_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             tbVarausID.Text = dgvVaraus.CurrentRow.Cells[0].Value.ToString();
-            tbAsiakasID.Text = dgvVaraus.CurrentRow.Cells[1].Value.ToString();
             tbMokkiID.Text = dgvVaraus.CurrentRow.Cells[2].Value.ToString();
+            tbAsiakas.Text = dgvVaraus.CurrentRow.Cells[3].Value.ToString();
         }
 
         private void btnLisaaPalvelu_Click(object sender, EventArgs e)
@@ -209,7 +174,7 @@ namespace Mokkivuokraus
             else
             {
                 tbVarausPalveluVarausID.Text = tbVarausID.Text;
-                tbPalveluID.Text = palvelunumero;
+               
                 tabControl1.SelectedIndex = 1;
             }
         }
@@ -217,10 +182,7 @@ namespace Mokkivuokraus
         private void btnLisaaLasku_Click(object sender, EventArgs e)
         {
 
-            varausnumero = tbVarausID.Text;
             Laskut laskutform = new Laskut();
-           // laskutform.mokkiHinta(mokkihinta, palveluhinta);
-            laskutform.varausID(varausnumero);
             laskutform.Show();
         }
 

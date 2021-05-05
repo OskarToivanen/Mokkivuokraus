@@ -40,18 +40,11 @@ namespace Mokkivuokraus
 
         public void mokkiDGV()
         {
-            string kysely = "";
-            if (toimialue == null)
-                kysely = "SELECT * FROM mokki ORDER BY mokki_id";
-            else // etsitään mokit toiminta-alueen perusteella
-                kysely = "SELECT * FROM mokki WHERE toimintaalue_id IN " +
-                    "(SELECT toimintaalue_id FROM toimintaalue WHERE nimi ='" + toimialue + "')";
-                
+            string kysely = "SELECT * FROM mokki ORDER BY mokki_id";     
             DataTable table = new DataTable();
             MySqlDataAdapter adapter = new MySqlDataAdapter(kysely, connection);
             adapter.Fill(table);
             dgvMokki.DataSource = table;
-            tbToimialue.Text = toimialue;
         }
 
         private void dvgMokki_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -164,32 +157,15 @@ namespace Mokkivuokraus
             tbVarustelu.Text = "";
             tbToimialue.Text = "";
         }
-        private string mokkinumero;
-        private string mokkihinta;
-        private string toimialue;
-        private string toimintaalueID;
+        
 
         // Tuodaan toiminta-alue formilta tieto mikä toiminta-alue kyseessä ja etsitään mökit sen perusteella
-        public void toimintaNimi(string nimi)
-        {
-            toimialue = nimi.ToString();
-            
-        }
-
-        public void toimintaID(string toimiID)
-        {
-            toimintaalueID = toimiID.ToString();
-        }
+        
 
         private void btnSeuraava_Click(object sender, EventArgs e)
         {
-            mokkinumero = lMokkiID.Text;
-            mokkihinta = tbHinta.Text;
-            ActiveForm.Close();
+            
             Asiakas asiakasForm = new Asiakas();
-            asiakasForm.toimintaID(toimintaalueID);
-            asiakasForm.mokkiHinta(mokkihinta);
-            asiakasForm.mokkiID(mokkinumero);
             asiakasForm.Show();
         }
 

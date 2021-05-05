@@ -151,43 +151,12 @@ namespace Mokkivuokraus
                 MessageBox.Show(ex.Message);
             }
         }
-        private string asiakasnumero;
-        private string toimintaalueID;
+       
         private void btnSeuraava_Click(object sender, EventArgs e)
         {
             Varaukset varausform = new Varaukset();
-            asiakasnumero = lblAsiakasId.Text;
-            varausform.asiakasID(asiakasnumero);
-            varausform.mokkiID(mokkinumero);
             ActiveForm.Close();
             varausform.Show();
-
-            //asiakasnumero = lblAsiakasId.Text;
-            //ActiveForm.Close();
-            //Palvelu palveluform = new Palvelu();
-            //palveluform.mokkiID(mokkinumero);
-            //palveluform.mokkiHinta(mokkihinta);
-            //palveluform.asiakasID(asiakasnumero);
-            //palveluform.toimintaID(toimintaalueID);
-            //palveluform.Show();
-        }
-
-        private string mokkinumero;
-        private string mokkihinta;
-
-        public void mokkiID(string mokki)
-        {
-            mokkinumero = mokki.ToString();
-        }
-
-        public void mokkiHinta(string hinta)
-        {
-            mokkihinta = hinta.ToString();
-        }
-
-        public void toimintaID(string toimiID)
-        {
-            toimintaalueID = toimiID.ToString();
         }
 
 

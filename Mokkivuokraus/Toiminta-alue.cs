@@ -19,6 +19,11 @@ namespace Mokkivuokraus
         MySqlConnection connection = new MySqlConnection("datasource=localhost;port=3307;" +
             "database=vn;username=root;Password=Ruutti;");
 
+        Varaukset varauksetform = new Varaukset();
+        Mokki mokkiform = new Mokki();
+        Asiakas asiakasform = new Asiakas();
+        Palvelu palveluform = new Palvelu();
+
         private void Aloitus_Load(object sender, EventArgs e)
         {
             // TODO: This line of code loads data into the 'villageNewbiesDataset.posti' table. You can move, or remove it, as needed.
@@ -26,6 +31,7 @@ namespace Mokkivuokraus
             toimintaAlueDGV();
             postiDGV();
             timerKellonAika.Start();
+            
         }
 
         public Aloitus()
@@ -37,7 +43,7 @@ namespace Mokkivuokraus
         public void toimintaAlueDGV()
         {
             // Päivitetään toimintaAlue datagidview kutsumalla tätä funktiota
-            string kysely = "SELECT * FROM toimintaalue ORDER BY toimintaalue_id";
+            string kysely = "SELECT toimintaalue_id as tunnus, nimi as alue FROM toimintaalue ORDER BY toimintaalue_id";
             DataTable table = new DataTable();
             MySqlDataAdapter adapter = new MySqlDataAdapter(kysely, connection);
             adapter.Fill(table);
@@ -193,20 +199,17 @@ namespace Mokkivuokraus
 
         private void mökkiToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Mokki mokkiForm = new Mokki();
-            mokkiForm.Show();
+            mokkiform.Show();
         }
 
         private void asiakasToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Asiakas asiakasForm = new Asiakas();
-            asiakasForm.Show();
+            asiakasform.Show();
         }
 
         private void palvelutToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Palvelu palveluForm = new Palvelu();
-            palveluForm.Show();
+            palveluform.Show();
         }
 
         private void dgvPosti_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -236,32 +239,29 @@ namespace Mokkivuokraus
 
         private void varauksetToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Varaukset varauksetForm = new Varaukset();
-            varauksetForm.Show();
+            varauksetform.Show();
         }
-        private string toimintanimi;
-        private string toimintaID;
+        
 
         // Viedään mokkiformille tieto miltä alueelta mokit etsitään
         private void btnSeuraava_Click(object sender, EventArgs e)
         {
             if (tbToimintaAlueID.Text == "")
                 MessageBox.Show("Alue ID virheellinen");
-            else
-            {
-                toimintaID = tbToimintaAlueID.Text;
-                toimintanimi = tbToimintaAlue.Text;
-                Mokki mokkiForm = new Mokki();
-                mokkiForm.toimintaNimi(toimintanimi);
-                mokkiForm.toimintaID(toimintaID);
-                mokkiForm.Show();
-            }
+            else   
+               mokkiform.Show();
+            
         }
 
         private void laskutToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Laskut laskutform = new Laskut();
             laskutform.Show();
+        }
+
+        private void uusiVarausToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            varauksetform.Show();
         }
     }
 }
