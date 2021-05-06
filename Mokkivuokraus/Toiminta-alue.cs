@@ -19,11 +19,6 @@ namespace Mokkivuokraus
         MySqlConnection connection = new MySqlConnection("datasource=localhost;port=3307;" +
             "database=vn;username=root;Password=Ruutti;");
 
-        Varaukset varauksetform = new Varaukset();
-        Mokki mokkiform = new Mokki();
-        Asiakas asiakasform = new Asiakas();
-        Palvelu palveluform = new Palvelu();
-
         private void Aloitus_Load(object sender, EventArgs e)
         {
             // TODO: This line of code loads data into the 'villageNewbiesDataset.posti' table. You can move, or remove it, as needed.
@@ -199,16 +194,19 @@ namespace Mokkivuokraus
 
         private void mökkiToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            Mokki mokkiform = new Mokki();
             mokkiform.Show();
         }
 
         private void asiakasToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            Asiakas asiakasform = new Asiakas();
             asiakasform.Show();
         }
 
         private void palvelutToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            Palvelu palveluform = new Palvelu();
             palveluform.Show();
         }
 
@@ -239,6 +237,7 @@ namespace Mokkivuokraus
 
         private void varauksetToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            Varaukset varauksetform = new Varaukset();
             varauksetform.Show();
         }
         
@@ -246,11 +245,8 @@ namespace Mokkivuokraus
         // Viedään mokkiformille tieto miltä alueelta mokit etsitään
         private void btnSeuraava_Click(object sender, EventArgs e)
         {
-            if (tbToimintaAlueID.Text == "")
-                MessageBox.Show("Alue ID virheellinen");
-            else   
-               mokkiform.Show();
-            
+                Mokki mokkiform = new Mokki();
+                mokkiform.Show();
         }
 
         private void laskutToolStripMenuItem_Click(object sender, EventArgs e)
@@ -261,7 +257,17 @@ namespace Mokkivuokraus
 
         private void uusiVarausToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            Varaukset varauksetform = new Varaukset();
             varauksetform.Show();
+        }
+        private string toimintaaalueID;
+        private void button1_Click(object sender, EventArgs e)
+        {
+            toimintaaalueID = "1";
+            Varaukset varauksetform = new Varaukset();
+            varauksetform.toimintaID(toimintaaalueID);
+            varauksetform.Show();
+
         }
     }
 }

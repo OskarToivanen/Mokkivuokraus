@@ -19,40 +19,55 @@ namespace Mokkivuokraus
         MySqlConnection connection = new MySqlConnection("datasource=localhost;port=3307;" +
             "database=vn;username=root;Password=Ruutti;");
         Mokki mokkiform = new Mokki();
-        
-
         public Varaukset()
         {
             InitializeComponent();
         }
-
+        private string kysymys;
         private void Varaukset_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'villageNewbiesDataset.toimintaalue' table. You can move, or remove it, as needed.
+            this.toimintaalueTableAdapter.Fill(this.villageNewbiesDataset.toimintaalue);
             // TODO: This line of code loads data into the 'villageNewbiesDataset.mokki' table. You can move, or remove it, as needed.
             this.mokkiTableAdapter.Fill(this.villageNewbiesDataset.mokki);
             // TODO: This line of code loads data into the 'villageNewbiesDataset.asiakas' table. You can move, or remove it, as needed.
             this.asiakasTableAdapter.Fill(this.villageNewbiesDataset.asiakas);
-            varausDGV();
-           
+            asiakasNimi();
+            kysymys = "SELECT * FROM varaukset";
+            varausDGV(kysymys);
             varauksenPalvelutDGV();
             timer1Kellonaika.Start();
-           
+
         }
 
-        public void varausDGV()
+        private void asiakasNimi()
         {
-
-            string kysely = "select * from varaukset";//"SELECT * FROM varaus ORDER BY varaus_id";
+            string kysely = "SELECT * FROM asiakkaat";
             DataTable table = new DataTable();
             MySqlDataAdapter adapter = new MySqlDataAdapter(kysely, connection);
             adapter.Fill(table);
+            cbAsiakas.DataSource = table;
+            cbAsiakas.DisplayMember = "nimi";
+            cbAsiakas.ValueMember = "asiakas_id";
+            tyhjennä();
+        }
+        
+        public void varausDGV(string answer)
+        {
+            if (answer == "SELECT * FROM varaukset")
+                answer = "SELECT * FROM varaukset";
+            else
+                answer = kysymys;
+
+            DataTable table = new DataTable();
+            MySqlDataAdapter adapter = new MySqlDataAdapter(answer, connection);
+            adapter.Fill(table);
             dgvVaraus.DataSource = table;
-            
+
         }
 
         public void varauksenPalvelutDGV()
         {
-
             string kysely = "SELECT * FROM varauksen_palvelut ORDER BY varaus_id";
             DataTable table = new DataTable();
             MySqlDataAdapter adapter = new MySqlDataAdapter(kysely, connection);
@@ -70,29 +85,27 @@ namespace Mokkivuokraus
             string loppupaiva = dtpVarattuLoppupvm.Value.Date.ToString("yyyy-MM-dd");
             try
             {
-     
-                    lisaavaraus = "insert into varaus(asiakas_id, mokki_mokki_id, varattu_pvm, vahvistus_pvm," +
-                        "varattu_alkupvm, varattu_loppupvm)VALUES(" +
-                            int.Parse(tbMokkiID.Text) + ",'" + int.Parse(tbAsiakas.Text) + "','" + paivat + "','"
-                            + paivat + "','" + alkupaiva + "','" +
-                            loppupaiva + "')";
-                    kyselytieto = tietokanta.SuoritaKysely(lisaavaraus);
-                    Palvelu palveluform = new Palvelu();
-                    palveluform.Show();
-                
+
+                lisaavaraus = "insert into varaus(asiakas_id, mokki_mokki_id, varattu_pvm, vahvistus_pvm," +
+                    "varattu_alkupvm, varattu_loppupvm)VALUES(" + int.Parse(cbAsiakasID.Text) + "," +
+                        int.Parse(tbMokkiID.Text) + ",'" + paivat + "','"
+                        + paivat + "','" + alkupaiva + "','" +
+                        loppupaiva + "')";
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
             finally
             {
-                
-                //kyselytieto = tietokanta.SuoritaKysely(lisaavaraus);
-                //KyselynSuoritus(kyselytieto);
-                varausDGV();
 
-                
+                kyselytieto = tietokanta.SuoritaKysely(lisaavaraus);
+                KyselynSuoritus(kyselytieto);
+                kysymys = "SELECT * FROM varaukset";
+                varausDGV(kysymys);
+
+
+
             }
         }
 
@@ -138,9 +151,21 @@ namespace Mokkivuokraus
 
         private void dgvVaraus_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            tbVarausID.Text = dgvVaraus.CurrentRow.Cells[0].Value.ToString();
-            tbMokkiID.Text = dgvVaraus.CurrentRow.Cells[2].Value.ToString();
-            tbAsiakas.Text = dgvVaraus.CurrentRow.Cells[3].Value.ToString();
+            if (kysymys == "SELECT * FROM mokki WHERE toimintaalue_id IN (SELECT toimintaalue_id FROM toimintaalue WHERE nimi ='" + cbToimintaalue.Text + "')")
+            {
+                tbMokkiID.Text = dgvVaraus.CurrentRow.Cells[0].Value.ToString();
+                tbMokkinimi.Text = dgvVaraus.CurrentRow.Cells[3].Value.ToString();
+
+
+            }
+            else
+            {
+                tbVarausID.Text = dgvVaraus.CurrentRow.Cells[0].Value.ToString();
+                tbMokkinimi.Text = dgvVaraus.CurrentRow.Cells[1].Value.ToString();
+                cbAsiakas.Text = dgvVaraus.CurrentRow.Cells[3].Value.ToString();
+            }
+
+
         }
 
         private void btnLisaaPalvelu_Click(object sender, EventArgs e)
@@ -149,11 +174,11 @@ namespace Mokkivuokraus
 
             try
             {
-                
+
                 lisaavarauksenpalvelut = "insert into varauksen_palvelut(varaus_id,palvelu_id,lkm) " +
                     "values('" + int.Parse(tbVarausPalveluVarausID.Text) +
                     "','" + int.Parse(tbPalveluID.Text) + "','" + int.Parse(tbLukumaara.Text) + "')";
-                
+
             }
             catch (Exception ex)
             {
@@ -174,7 +199,7 @@ namespace Mokkivuokraus
             else
             {
                 tbVarausPalveluVarausID.Text = tbVarausID.Text;
-               
+
                 tabControl1.SelectedIndex = 1;
             }
         }
@@ -194,13 +219,78 @@ namespace Mokkivuokraus
             if (result == DialogResult.Yes)
             {
                 if (tbVarausID.Text != "")
-                poistavaraus = "DELETE FROM varaus WHERE varaus_id ="
-                            + int.Parse(tbVarausID.Text);
-                
+                    poistavaraus = "DELETE FROM varaus WHERE varaus_id ="
+                                + int.Parse(tbVarausID.Text);
+
             }
             kyselytieto = tietokanta.SuoritaKysely(poistavaraus);
             KyselynSuoritus(kyselytieto);
-            varausDGV();
+            // varausDGV();
+        }
+
+        private string toimintaalueID;
+        public void toimintaID(string toimiID)
+        {
+            toimintaalueID = toimiID;
+        }
+
+        private void tyhjennä()
+        {
+            tbVarausID.Text = "";
+            cbToimintaalue.Text = "";
+            tbMokkiID.Text = "";
+            tbMokkinimi.Text = "";
+            cbAsiakas.Text = "";
+            cbAsiakasID.Text = "";
+        }
+
+        private void tyhjennäTiedotToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            tyhjennä();
+        }
+
+        private void btnUusiVaraus_Click(object sender, EventArgs e)
+        {
+            tyhjennä();
+            cbToimintaalue.Enabled = true;
+            tbMokkiID.Enabled = true;
+            cbAsiakas.Enabled = true;
+            btnVaraa.Enabled = true;
+            cbToimintaalue.Focus();
+            kysymys = "SELECT * FROM mokki order by mokki_id";
+            varausDGV(kysymys);
+        }
+
+        private void cbToimintaalue_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            kysymys = "SELECT * FROM mokki WHERE toimintaalue_id IN " +
+               "(SELECT toimintaalue_id FROM toimintaalue WHERE nimi ='" + cbToimintaalue.Text + "')";
+            tbVarausID.Text = "";
+            varausDGV(kysymys);
+        }
+
+        private void cbAsiakas_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string kysely = "SELECT * FROM asiakkaat WHERE asiakas_id IN " +
+               "(SELECT asiakas_id FROM asiakkaat WHERE nimi ='" + cbAsiakas.Text + "')";
+            DataTable table = new DataTable();
+            MySqlDataAdapter adapter = new MySqlDataAdapter(kysely, connection);
+            adapter.Fill(table);
+            cbAsiakasID.DataSource = table;
+            cbAsiakasID.DisplayMember = "asiakas_id";
+            cbAsiakasID.ValueMember = "nimi";
+
+        }
+
+        private void btnPeruVaraus_Click(object sender, EventArgs e)
+        {
+            tyhjennä();
+            kysymys = "SELECT * FROM varaukset";
+            varausDGV(kysymys);
+            cbToimintaalue.Enabled = false;
+            tbMokkiID.Enabled = false;
+            cbAsiakas.Enabled = false;
+            btnVaraa.Enabled = false;
         }
     }
 }
