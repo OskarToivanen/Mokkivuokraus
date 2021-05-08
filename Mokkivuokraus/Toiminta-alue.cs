@@ -251,7 +251,7 @@ namespace Mokkivuokraus
 
         private void laskutToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Laskut laskutform = new Laskut();
+            Laskutustiedot laskutform = new Laskutustiedot();
             laskutform.Show();
         }
 

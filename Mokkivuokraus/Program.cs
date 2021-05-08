@@ -16,7 +16,7 @@ namespace Mokkivuokraus
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Aloitus());
+            Application.Run(new Varaukset());
         }
     }
 }

@@ -89,11 +89,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Laskut.cs">
+    <Compile Include="Laskutustiedot.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Laskut.Designer.cs">
-      <DependentUpon>Laskut.cs</DependentUpon>
+    <Compile Include="Laskutustiedot.Designer.cs">
+      <DependentUpon>Laskutustiedot.cs</DependentUpon>
     </Compile>
     <Compile Include="SQL.cs" />
     <Compile Include="Toiminta-alue.cs">
@@ -136,8 +136,8 @@
     <EmbeddedResource Include="Asiakas.resx">
       <DependentUpon>Asiakas.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Laskut.resx">
-      <DependentUpon>Laskut.cs</DependentUpon>
+    <EmbeddedResource Include="Laskutustiedot.resx">
+      <DependentUpon>Laskutustiedot.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Mokki.resx">
       <DependentUpon>Mokki.cs</DependentUpon>

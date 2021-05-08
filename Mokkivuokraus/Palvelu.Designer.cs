@@ -127,7 +127,7 @@ namespace Mokkivuokraus
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(55, 220);
+            this.button1.Location = new System.Drawing.Point(55, 324);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(149, 71);
             this.button1.TabIndex = 4;
