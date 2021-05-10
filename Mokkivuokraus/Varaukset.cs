@@ -50,18 +50,18 @@ namespace Mokkivuokraus
             cbAsiakas.DataSource = table;
             cbAsiakas.DisplayMember = "nimi";
             cbAsiakas.ValueMember = "asiakas_id";
-            tyhjenna();
+            tyhjennaTiedot();
         }
 
-        private void varausDGV(string answer)
+        private void varausDGV(string vastaus)
         {
-            if (answer == "SELECT * FROM varaustiedot")
-                answer = "SELECT * FROM varaustiedot";
+            if (vastaus == "SELECT * FROM varaustiedot")
+                vastaus = "SELECT * FROM varaustiedot";
             else
-                answer = muutoskysely;
+                vastaus = muutoskysely;
 
             DataTable table = new DataTable();
-            MySqlDataAdapter adapter = new MySqlDataAdapter(answer, connection);
+            MySqlDataAdapter adapter = new MySqlDataAdapter(vastaus, connection);
             adapter.Fill(table);
             dgvVaraus.DataSource = table;
 
@@ -69,10 +69,16 @@ namespace Mokkivuokraus
 
         private void palveluDGV()
         {
-            string kysely = "SELECT p.palvelu_id, p.toimintaalue_id, p.nimi, p.kuvaus, p.hinta, p.alv " +
-                "FROM toimintaalue ta JOIN palvelu p " +
-                "ON ta.toimintaalue_id = p.toimintaalue_id where ta.toimintaalue_id " +
-                "IN(SELECT ta.toimintaalue_id WHERE ta.nimi ='" + tbPalveluAlueID.Text + "')";//"SELECT * FROM palvelu ORDER BY palvelu_id";
+            string kysely = "";
+            if (tbVarausID.Text == "")
+                kysely = "SELECT * FROM palvelu";
+            else
+            {
+                kysely = "SELECT p.palvelu_id, p.toimintaalue_id, p.nimi, p.kuvaus, p.hinta, p.alv " +
+                    "FROM toimintaalue ta JOIN palvelu p " +
+                    "ON ta.toimintaalue_id = p.toimintaalue_id where ta.toimintaalue_id " +
+                    "IN(SELECT ta.toimintaalue_id WHERE ta.nimi ='" + tbPalveluAlueID.Text + "')";
+            }
             DataTable table = new DataTable();
             MySqlDataAdapter adapter = new MySqlDataAdapter(kysely, connection);
             adapter.Fill(table);
@@ -106,7 +112,7 @@ namespace Mokkivuokraus
                 kyselytieto = tietokanta.SuoritaKysely(lisaavaraus);
                 KyselynSuoritus(kyselytieto);
                 muutoskysely = "SELECT * FROM varaustiedot";
-                tyhjenna();
+                tyhjennaTiedot();
                 lukitse();
                 varausDGV(muutoskysely);
             }
@@ -186,7 +192,6 @@ namespace Mokkivuokraus
 
             try
             {
-
                 lisaavarauksenpalvelut = "insert into varauksen_palvelut(varaus_id,palvelu_id,lkm) " +
                     "values('" + int.Parse(tbVarausPalveluVarausID.Text) +
                     "','" + int.Parse(tbPalveluID.Text) + "','" + int.Parse(nudLukumaara.Value.ToString()) + "')";
@@ -200,19 +205,20 @@ namespace Mokkivuokraus
             {
                 kyselytieto = tietokanta.SuoritaKysely(lisaavarauksenpalvelut);
                 KyselynSuoritus(kyselytieto);
+                tabControl1.SelectedIndex = 0;
             }
         }
 
         private void btnLisaaLasku_Click(object sender, EventArgs e)
         {
             if (tbVarausID.Text == "")
-                MessageBox.Show("Varausnumero virheellinen!","Virhe");
+                MessageBox.Show("Varausnumero virheellinen!", "Virhe");
             else
             {
                 Laskutustiedot laskutform = new Laskutustiedot();
                 laskutform.Show();
             }
-            
+
         }
 
         private void btnPoista_Click(object sender, EventArgs e)
@@ -245,7 +251,7 @@ namespace Mokkivuokraus
             cbAsiakas.Enabled = false;
             btnVaraa.Enabled = false;
         }
-        private void tyhjenna()
+        private void tyhjennaTiedot()
         {
             tbVarausID.Text = "";
             cbToimintaalue.Text = "";
@@ -257,12 +263,12 @@ namespace Mokkivuokraus
 
         private void tyhjennäTiedotToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            tyhjenna();
+            tyhjennaTiedot();
         }
 
         private void btnUusiVaraus_Click(object sender, EventArgs e)
         {
-            tyhjenna();
+            tyhjennaTiedot();
             cbToimintaalue.Enabled = true;
             cbAsiakas.Enabled = true;
             btnVaraa.Enabled = true;
@@ -299,7 +305,7 @@ namespace Mokkivuokraus
 
         private void btnPeruVaraus_Click(object sender, EventArgs e)
         {
-            tyhjenna();
+            tyhjennaTiedot();
             muutoskysely = "SELECT * FROM varaustiedot";
             varausDGV(muutoskysely);
             cbToimintaalue.Enabled = false;
@@ -316,16 +322,17 @@ namespace Mokkivuokraus
         private void tbVarausID_TextChanged(object sender, EventArgs e)
         {
             if (tbVarausID.Text != "")
-            {
                 btnLisaaVarausPalvelu.Enabled = true;
-                btnLisaaLasku.Enabled = true;
-            }
-                
+
+
+
         }
 
         private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
         {
             palveluDGV();
+            tbPalveluID.Text = "";
+            nudLukumaara.Value = 0;
         }
 
         private void dgvPalvelu_CellClick(object sender, DataGridViewCellEventArgs e)

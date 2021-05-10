@@ -278,7 +278,6 @@ namespace Mokkivuokraus
             // btnLisaaLasku
             // 
             this.btnLisaaLasku.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnLisaaLasku.Enabled = false;
             this.btnLisaaLasku.Location = new System.Drawing.Point(995, 551);
             this.btnLisaaLasku.Name = "btnLisaaLasku";
             this.btnLisaaLasku.Size = new System.Drawing.Size(120, 52);
@@ -406,11 +405,11 @@ namespace Mokkivuokraus
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvVaraus.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvVaraus.Location = new System.Drawing.Point(379, 6);
+            this.dgvVaraus.Location = new System.Drawing.Point(195, 6);
             this.dgvVaraus.Name = "dgvVaraus";
             this.dgvVaraus.RowHeadersWidth = 51;
             this.dgvVaraus.RowTemplate.Height = 24;
-            this.dgvVaraus.Size = new System.Drawing.Size(747, 529);
+            this.dgvVaraus.Size = new System.Drawing.Size(931, 529);
             this.dgvVaraus.TabIndex = 14;
             this.dgvVaraus.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvVaraus_CellClick);
             // 
@@ -431,7 +430,7 @@ namespace Mokkivuokraus
             this.tbVarausPalvelut.Location = new System.Drawing.Point(4, 25);
             this.tbVarausPalvelut.Name = "tbVarausPalvelut";
             this.tbVarausPalvelut.Padding = new System.Windows.Forms.Padding(3);
-            this.tbVarausPalvelut.Size = new System.Drawing.Size(1090, 637);
+            this.tbVarausPalvelut.Size = new System.Drawing.Size(1129, 635);
             this.tbVarausPalvelut.TabIndex = 2;
             this.tbVarausPalvelut.Text = "Lisäpalvelut";
             // 
@@ -462,21 +461,21 @@ namespace Mokkivuokraus
             // dgvPalvelu
             // 
             this.dgvPalvelu.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvPalvelu.Location = new System.Drawing.Point(464, 6);
+            this.dgvPalvelu.Location = new System.Drawing.Point(323, 6);
             this.dgvPalvelu.Name = "dgvPalvelu";
             this.dgvPalvelu.RowHeadersWidth = 51;
             this.dgvPalvelu.RowTemplate.Height = 24;
-            this.dgvPalvelu.Size = new System.Drawing.Size(670, 622);
+            this.dgvPalvelu.Size = new System.Drawing.Size(811, 622);
             this.dgvPalvelu.TabIndex = 9;
             this.dgvPalvelu.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPalvelu_CellClick);
             // 
             // btnLisaaPalvelu
             // 
-            this.btnLisaaPalvelu.Location = new System.Drawing.Point(285, 100);
+            this.btnLisaaPalvelu.Location = new System.Drawing.Point(189, 100);
             this.btnLisaaPalvelu.Name = "btnLisaaPalvelu";
-            this.btnLisaaPalvelu.Size = new System.Drawing.Size(111, 37);
+            this.btnLisaaPalvelu.Size = new System.Drawing.Size(128, 48);
             this.btnLisaaPalvelu.TabIndex = 8;
-            this.btnLisaaPalvelu.Text = "Lisää";
+            this.btnLisaaPalvelu.Text = "Lisää palvelu";
             this.btnLisaaPalvelu.UseVisualStyleBackColor = true;
             this.btnLisaaPalvelu.Click += new System.EventHandler(this.btnLisaaPalvelu_Click);
             // 

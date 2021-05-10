@@ -35,7 +35,7 @@ namespace Mokkivuokraus
             
         }
 
-        public void toimintaAlueDGV()
+        private void toimintaAlueDGV()
         {
             // Päivitetään toimintaAlue datagidview kutsumalla tätä funktiota
             string kysely = "SELECT toimintaalue_id as tunnus, nimi as alue FROM toimintaalue ORDER BY toimintaalue_id";
@@ -45,7 +45,7 @@ namespace Mokkivuokraus
             dgvToimintaAlue.DataSource = table;
 
         }
-        public void postiDGV()
+        private void postiDGV()
         {
             // Päivitetään postidatagridview kutsumalla tätä funktiota
             string kysely = "SELECT * FROM posti";
@@ -105,7 +105,7 @@ namespace Mokkivuokraus
             KyselynSuoritus(kyselytieto);           
             toimintaAlueDGV();
             postiDGV();
-            Tyhjenna();
+            tyhjennaTiedot();
         }
 
         private void KyselynSuoritus(string tieto)
@@ -137,7 +137,7 @@ namespace Mokkivuokraus
             KyselynSuoritus(kyselytieto);
             toimintaAlueDGV();
             postiDGV();
-            Tyhjenna();
+            tyhjennaTiedot();
             
         }
 
@@ -182,7 +182,7 @@ namespace Mokkivuokraus
                
                 toimintaAlueDGV();
                 postiDGV();
-                Tyhjenna();
+                tyhjennaTiedot();
                
             }
             catch (Exception ex)
@@ -222,7 +222,7 @@ namespace Mokkivuokraus
                 e.Handled = true;
         }
 
-        public void Tyhjenna()
+        private void tyhjennaTiedot()
         {
             tbToimintaAlueID.Text = "";
             tbToimintaAlue.Text = "";
@@ -232,7 +232,7 @@ namespace Mokkivuokraus
 
         private void tyhjennäTiedotToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Tyhjenna();
+            tyhjennaTiedot();
         }
 
         private void varauksetToolStripMenuItem_Click(object sender, EventArgs e)
@@ -240,15 +240,7 @@ namespace Mokkivuokraus
             Varaukset varauksetform = new Varaukset();
             varauksetform.Show();
         }
-        
-
-        // Viedään mokkiformille tieto miltä alueelta mokit etsitään
-        private void btnSeuraava_Click(object sender, EventArgs e)
-        {
-                Mokki mokkiform = new Mokki();
-                mokkiform.Show();
-        }
-
+      
         private void laskutToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Laskutustiedot laskutform = new Laskutustiedot();
@@ -260,14 +252,6 @@ namespace Mokkivuokraus
             Varaukset varauksetform = new Varaukset();
             varauksetform.Show();
         }
-        private string toimintaaalueID;
-        private void button1_Click(object sender, EventArgs e)
-        {
-            toimintaaalueID = "1";
-            Varaukset varauksetform = new Varaukset();
-            varauksetform.toimintaID(toimintaaalueID);
-            varauksetform.Show();
-
-        }
+       
     }
 }

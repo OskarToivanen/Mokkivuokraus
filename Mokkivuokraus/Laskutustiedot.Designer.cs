@@ -36,8 +36,6 @@ namespace Mokkivuokraus
             this.asiakasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.palvelutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toimintaalueToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.lisääToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.tyhjennäTiedotToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.tsslKello = new System.Windows.Forms.ToolStripStatusLabel();
             this.timer1KellonAika = new System.Windows.Forms.Timer(this.components);
@@ -47,7 +45,7 @@ namespace Mokkivuokraus
             this.label5 = new System.Windows.Forms.Label();
             this.tbSumma = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.btnLisaa = new System.Windows.Forms.Button();
+            this.btnVahvista = new System.Windows.Forms.Button();
             this.tbAlv = new System.Windows.Forms.TextBox();
             this.tbNimi = new System.Windows.Forms.TextBox();
             this.tbVarausID = new System.Windows.Forms.TextBox();
@@ -57,10 +55,10 @@ namespace Mokkivuokraus
             this.label1 = new System.Windows.Forms.Label();
             this.dgvLaskut = new System.Windows.Forms.DataGridView();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.dgvVahvistetutLaskut = new System.Windows.Forms.DataGridView();
-            this.btnPoista = new System.Windows.Forms.Button();
-            this.tbPoistaID = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
+            this.tbPoistaID = new System.Windows.Forms.TextBox();
+            this.btnPoista = new System.Windows.Forms.Button();
+            this.dgvVahvistetutLaskut = new System.Windows.Forms.DataGridView();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -74,8 +72,7 @@ namespace Mokkivuokraus
             // 
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.avaaToolStripMenuItem,
-            this.lisääToolStripMenuItem});
+            this.avaaToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(955, 28);
@@ -117,20 +114,6 @@ namespace Mokkivuokraus
             this.toimintaalueToolStripMenuItem.Size = new System.Drawing.Size(184, 26);
             this.toimintaalueToolStripMenuItem.Text = "Toiminta-alue";
             // 
-            // lisääToolStripMenuItem
-            // 
-            this.lisääToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tyhjennäTiedotToolStripMenuItem});
-            this.lisääToolStripMenuItem.Name = "lisääToolStripMenuItem";
-            this.lisääToolStripMenuItem.Size = new System.Drawing.Size(56, 24);
-            this.lisääToolStripMenuItem.Text = "Lisää";
-            // 
-            // tyhjennäTiedotToolStripMenuItem
-            // 
-            this.tyhjennäTiedotToolStripMenuItem.Name = "tyhjennäTiedotToolStripMenuItem";
-            this.tyhjennäTiedotToolStripMenuItem.Size = new System.Drawing.Size(194, 26);
-            this.tyhjennäTiedotToolStripMenuItem.Text = "Tyhjennä tiedot";
-            // 
             // statusStrip1
             // 
             this.statusStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
@@ -170,7 +153,7 @@ namespace Mokkivuokraus
             this.tabPage1.Controls.Add(this.label5);
             this.tabPage1.Controls.Add(this.tbSumma);
             this.tabPage1.Controls.Add(this.label2);
-            this.tabPage1.Controls.Add(this.btnLisaa);
+            this.tabPage1.Controls.Add(this.btnVahvista);
             this.tabPage1.Controls.Add(this.tbAlv);
             this.tabPage1.Controls.Add(this.tbNimi);
             this.tabPage1.Controls.Add(this.tbVarausID);
@@ -221,15 +204,15 @@ namespace Mokkivuokraus
             this.label2.TabIndex = 39;
             this.label2.Text = "Summa";
             // 
-            // btnLisaa
+            // btnVahvista
             // 
-            this.btnLisaa.Location = new System.Drawing.Point(23, 466);
-            this.btnLisaa.Name = "btnLisaa";
-            this.btnLisaa.Size = new System.Drawing.Size(97, 31);
-            this.btnLisaa.TabIndex = 38;
-            this.btnLisaa.Text = "Lisää";
-            this.btnLisaa.UseVisualStyleBackColor = true;
-            this.btnLisaa.Click += new System.EventHandler(this.btnLisaa_Click);
+            this.btnVahvista.Location = new System.Drawing.Point(23, 466);
+            this.btnVahvista.Name = "btnVahvista";
+            this.btnVahvista.Size = new System.Drawing.Size(97, 31);
+            this.btnVahvista.TabIndex = 38;
+            this.btnVahvista.Text = "Vahvista";
+            this.btnVahvista.UseVisualStyleBackColor = true;
+            this.btnVahvista.Click += new System.EventHandler(this.btnVahvista_Click);
             // 
             // tbAlv
             // 
@@ -298,11 +281,11 @@ namespace Mokkivuokraus
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvLaskut.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvLaskut.Location = new System.Drawing.Point(277, 8);
+            this.dgvLaskut.Location = new System.Drawing.Point(191, 8);
             this.dgvLaskut.Name = "dgvLaskut";
             this.dgvLaskut.RowHeadersWidth = 51;
             this.dgvLaskut.RowTemplate.Height = 24;
-            this.dgvLaskut.Size = new System.Drawing.Size(651, 489);
+            this.dgvLaskut.Size = new System.Drawing.Size(737, 489);
             this.dgvLaskut.TabIndex = 30;
             this.dgvLaskut.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvLaskut_CellClick);
             // 
@@ -318,18 +301,24 @@ namespace Mokkivuokraus
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage2.Size = new System.Drawing.Size(947, 536);
             this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Vahvitetut laskut";
+            this.tabPage2.Text = "Vahvistetut laskut";
             // 
-            // dgvVahvistetutLaskut
+            // label7
             // 
-            this.dgvVahvistetutLaskut.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvVahvistetutLaskut.Location = new System.Drawing.Point(151, 3);
-            this.dgvVahvistetutLaskut.Name = "dgvVahvistetutLaskut";
-            this.dgvVahvistetutLaskut.RowHeadersWidth = 51;
-            this.dgvVahvistetutLaskut.RowTemplate.Height = 24;
-            this.dgvVahvistetutLaskut.Size = new System.Drawing.Size(793, 528);
-            this.dgvVahvistetutLaskut.TabIndex = 0;
-            this.dgvVahvistetutLaskut.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvVahvistetutLaskut_CellClick);
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(20, 29);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(94, 17);
+            this.label7.TabIndex = 3;
+            this.label7.Text = "Laskunumero";
+            // 
+            // tbPoistaID
+            // 
+            this.tbPoistaID.Enabled = false;
+            this.tbPoistaID.Location = new System.Drawing.Point(23, 72);
+            this.tbPoistaID.Name = "tbPoistaID";
+            this.tbPoistaID.Size = new System.Drawing.Size(77, 22);
+            this.tbPoistaID.TabIndex = 2;
             // 
             // btnPoista
             // 
@@ -341,22 +330,19 @@ namespace Mokkivuokraus
             this.btnPoista.UseVisualStyleBackColor = true;
             this.btnPoista.Click += new System.EventHandler(this.btnPoista_Click);
             // 
-            // tbPoistaID
+            // dgvVahvistetutLaskut
             // 
-            this.tbPoistaID.Enabled = false;
-            this.tbPoistaID.Location = new System.Drawing.Point(23, 72);
-            this.tbPoistaID.Name = "tbPoistaID";
-            this.tbPoistaID.Size = new System.Drawing.Size(77, 22);
-            this.tbPoistaID.TabIndex = 2;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(23, 29);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(94, 17);
-            this.label7.TabIndex = 3;
-            this.label7.Text = "Laskunumero";
+            this.dgvVahvistetutLaskut.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgvVahvistetutLaskut.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvVahvistetutLaskut.Location = new System.Drawing.Point(151, 3);
+            this.dgvVahvistetutLaskut.Name = "dgvVahvistetutLaskut";
+            this.dgvVahvistetutLaskut.RowHeadersWidth = 51;
+            this.dgvVahvistetutLaskut.RowTemplate.Height = 24;
+            this.dgvVahvistetutLaskut.Size = new System.Drawing.Size(793, 528);
+            this.dgvVahvistetutLaskut.TabIndex = 0;
+            this.dgvVahvistetutLaskut.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvVahvistetutLaskut_CellClick);
             // 
             // Laskutustiedot
             // 
@@ -392,8 +378,6 @@ namespace Mokkivuokraus
         private System.Windows.Forms.ToolStripMenuItem asiakasToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem palvelutToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem toimintaalueToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem lisääToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem tyhjennäTiedotToolStripMenuItem;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel tsslKello;
         private System.Windows.Forms.Timer timer1KellonAika;
@@ -403,7 +387,7 @@ namespace Mokkivuokraus
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox tbSumma;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button btnLisaa;
+        private System.Windows.Forms.Button btnVahvista;
         private System.Windows.Forms.TextBox tbAlv;
         private System.Windows.Forms.TextBox tbNimi;
         private System.Windows.Forms.TextBox tbVarausID;

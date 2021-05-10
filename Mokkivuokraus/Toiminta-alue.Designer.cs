@@ -60,8 +60,6 @@ namespace Mokkivuokraus
             this.dgvPosti = new System.Windows.Forms.DataGridView();
             this.tbPostinumero = new System.Windows.Forms.TextBox();
             this.tbToimipaikka = new System.Windows.Forms.TextBox();
-            this.btnSeuraava = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvToimintaAlue)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
@@ -322,33 +320,11 @@ namespace Mokkivuokraus
             this.tbToimipaikka.Size = new System.Drawing.Size(117, 22);
             this.tbToimipaikka.TabIndex = 4;
             // 
-            // btnSeuraava
-            // 
-            this.btnSeuraava.Location = new System.Drawing.Point(16, 476);
-            this.btnSeuraava.Name = "btnSeuraava";
-            this.btnSeuraava.Size = new System.Drawing.Size(104, 33);
-            this.btnSeuraava.TabIndex = 13;
-            this.btnSeuraava.Text = "Seuraava";
-            this.btnSeuraava.UseVisualStyleBackColor = true;
-            this.btnSeuraava.Click += new System.EventHandler(this.btnSeuraava_Click);
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(249, 356);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(82, 35);
-            this.button1.TabIndex = 14;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
             // Aloitus
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(888, 553);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.btnSeuraava);
             this.Controls.Add(this.tbToimipaikka);
             this.Controls.Add(this.tbPostinumero);
             this.Controls.Add(this.dgvPosti);
@@ -412,10 +388,8 @@ namespace Mokkivuokraus
         private System.Windows.Forms.ToolStripMenuItem lisääToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem tyhjennäTiedotToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem varauksetToolStripMenuItem;
-        private System.Windows.Forms.Button btnSeuraava;
         private System.Windows.Forms.ToolStripMenuItem laskutToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem uusiVarausToolStripMenuItem;
-        private System.Windows.Forms.Button button1;
     }
 }
 

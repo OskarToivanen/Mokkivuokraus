@@ -59,25 +59,7 @@ namespace Mokkivuokraus
         string kyselytieto;
         private void btnLisaa_Click(object sender, EventArgs e)
         {
-           string lisaalasku = "insert into lasku(varaus_id, summa, alv) " +
-                "values(" + int.Parse(tbVarausID.Text) + "," + double.Parse(tbSumma.Text)
-                + "," + double.Parse(tbAlv.Text) + ")";
-           
-            DialogResult result = MessageBox.Show("Lasku lähetetään osoitteeseen " + 
-                tbSposti.Text, "Vahvistetaan lasku", MessageBoxButtons.YesNo);
-            string poistavaraus = "";
-            if (result == DialogResult.Yes)
-            {
-                if (tbPoistaID.Text != "")
-                    poistavaraus = "DELETE FROM lasku WHERE lasku_id ="
-                                + int.Parse(tbPoistaID.Text);
-                kyselytieto = tietokanta.SuoritaKysely(lisaalasku);
-                KyselynSuoritus(kyselytieto);
-                laskutDGV();
 
-            }
-            tabControl1.SelectedIndex = 1;
-            
         }
 
         private void KyselynSuoritus(string tieto)
@@ -116,15 +98,16 @@ namespace Mokkivuokraus
         {
             DialogResult result = MessageBox.Show("Haluatko varmasti poistaa tiedot?",
                    "Poista", MessageBoxButtons.YesNo);
-            string poistavaraus = "";
+            string poistalasku = "";
             if (result == DialogResult.Yes)
             {
                 if (tbPoistaID.Text != "")
-                    poistavaraus = "DELETE FROM lasku WHERE lasku_id ="
+                    poistalasku = "DELETE FROM lasku WHERE lasku_id ="
                                 + int.Parse(tbPoistaID.Text);
 
             }
-            kyselytieto = tietokanta.SuoritaKysely(poistavaraus);
+            tbPoistaID.Text = "";
+            kyselytieto = tietokanta.SuoritaKysely(poistalasku);
             KyselynSuoritus(kyselytieto);
             vahvistetutLaskutDGV();
         }
@@ -132,6 +115,34 @@ namespace Mokkivuokraus
         private void dgvVahvistetutLaskut_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             tbPoistaID.Text = dgvVahvistetutLaskut.CurrentRow.Cells[0].Value.ToString();
+        }
+
+        private void btnVahvista_Click(object sender, EventArgs e)
+        {
+            
+            string summa = tbSumma.Text;
+            string alv = tbAlv.Text;
+            summa = summa.Replace(",",".");
+            alv = alv.Replace(",", ".");
+            
+
+            string lisaalasku = "";
+
+            DialogResult result = MessageBox.Show("Lasku lähetetään osoitteeseen " +
+                tbSposti.Text, "Vahvistetaan lasku", MessageBoxButtons.YesNo);
+
+            if (result == DialogResult.Yes)
+            {
+                lisaalasku = "insert into lasku(varaus_id, summa, alv) " +
+                "values(" + int.Parse(tbVarausID.Text) + "," + summa
+                + "," + alv + ")";
+
+                kyselytieto = tietokanta.SuoritaKysely(lisaalasku);
+                KyselynSuoritus(kyselytieto);
+                laskutDGV();
+                vahvistetutLaskutDGV();
+            }
+            tabControl1.SelectedIndex = 1;
         }
     }
 }
