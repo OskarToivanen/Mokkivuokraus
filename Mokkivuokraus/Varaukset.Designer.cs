@@ -50,7 +50,7 @@ namespace Mokkivuokraus
             this.label6 = new System.Windows.Forms.Label();
             this.tbVarausID = new System.Windows.Forms.TextBox();
             this.btnVaraa = new System.Windows.Forms.Button();
-            this.label5 = new System.Windows.Forms.Label();
+            this.lblVaraukset = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.tbMokkinimi = new System.Windows.Forms.TextBox();
@@ -148,7 +148,7 @@ namespace Mokkivuokraus
             this.tpVaraukset.Controls.Add(this.label6);
             this.tpVaraukset.Controls.Add(this.tbVarausID);
             this.tpVaraukset.Controls.Add(this.btnVaraa);
-            this.tpVaraukset.Controls.Add(this.label5);
+            this.tpVaraukset.Controls.Add(this.lblVaraukset);
             this.tpVaraukset.Controls.Add(this.label4);
             this.tpVaraukset.Controls.Add(this.label3);
             this.tpVaraukset.Controls.Add(this.tbMokkinimi);
@@ -172,7 +172,7 @@ namespace Mokkivuokraus
             this.btnLisaaVarausPalvelu.Location = new System.Drawing.Point(867, 551);
             this.btnLisaaVarausPalvelu.Name = "btnLisaaVarausPalvelu";
             this.btnLisaaVarausPalvelu.Size = new System.Drawing.Size(105, 77);
-            this.btnLisaaVarausPalvelu.TabIndex = 47;
+            this.btnLisaaVarausPalvelu.TabIndex = 5;
             this.btnLisaaVarausPalvelu.Text = "Lisää varaukseen palvelu";
             this.btnLisaaVarausPalvelu.UseVisualStyleBackColor = true;
             this.btnLisaaVarausPalvelu.Click += new System.EventHandler(this.button1_Click);
@@ -180,10 +180,11 @@ namespace Mokkivuokraus
             // btnPeruVaraus
             // 
             this.btnPeruVaraus.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnPeruVaraus.Enabled = false;
             this.btnPeruVaraus.Location = new System.Drawing.Point(747, 551);
             this.btnPeruVaraus.Name = "btnPeruVaraus";
             this.btnPeruVaraus.Size = new System.Drawing.Size(105, 41);
-            this.btnPeruVaraus.TabIndex = 46;
+            this.btnPeruVaraus.TabIndex = 4;
             this.btnPeruVaraus.Text = "Peruuta";
             this.btnPeruVaraus.UseVisualStyleBackColor = true;
             this.btnPeruVaraus.Click += new System.EventHandler(this.btnPeruVaraus_Click);
@@ -212,7 +213,7 @@ namespace Mokkivuokraus
             this.btnUusiVaraus.Location = new System.Drawing.Point(379, 551);
             this.btnUusiVaraus.Name = "btnUusiVaraus";
             this.btnUusiVaraus.Size = new System.Drawing.Size(105, 41);
-            this.btnUusiVaraus.TabIndex = 42;
+            this.btnUusiVaraus.TabIndex = 1;
             this.btnUusiVaraus.Text = "Uusi varaus";
             this.btnUusiVaraus.UseVisualStyleBackColor = true;
             this.btnUusiVaraus.Click += new System.EventHandler(this.btnUusiVaraus_Click);
@@ -228,8 +229,6 @@ namespace Mokkivuokraus
             // 
             // cbToimintaalue
             // 
-            this.cbToimintaalue.DataSource = this.toimintaalueBindingSource;
-            this.cbToimintaalue.DisplayMember = "nimi";
             this.cbToimintaalue.Enabled = false;
             this.cbToimintaalue.FormattingEnabled = true;
             this.cbToimintaalue.Location = new System.Drawing.Point(14, 146);
@@ -270,7 +269,7 @@ namespace Mokkivuokraus
             this.btnPoista.Location = new System.Drawing.Point(622, 551);
             this.btnPoista.Name = "btnPoista";
             this.btnPoista.Size = new System.Drawing.Size(105, 41);
-            this.btnPoista.TabIndex = 36;
+            this.btnPoista.TabIndex = 3;
             this.btnPoista.Text = "Poista";
             this.btnPoista.UseVisualStyleBackColor = true;
             this.btnPoista.Click += new System.EventHandler(this.btnPoista_Click);
@@ -281,7 +280,7 @@ namespace Mokkivuokraus
             this.btnLisaaLasku.Location = new System.Drawing.Point(995, 551);
             this.btnLisaaLasku.Name = "btnLisaaLasku";
             this.btnLisaaLasku.Size = new System.Drawing.Size(120, 52);
-            this.btnLisaaLasku.TabIndex = 35;
+            this.btnLisaaLasku.TabIndex = 6;
             this.btnLisaaLasku.Text = "Lisää lasku";
             this.btnLisaaLasku.UseVisualStyleBackColor = true;
             this.btnLisaaLasku.Click += new System.EventHandler(this.btnLisaaLasku_Click);
@@ -291,9 +290,9 @@ namespace Mokkivuokraus
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(11, 47);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(70, 17);
+            this.label6.Size = new System.Drawing.Size(101, 17);
             this.label6.TabIndex = 26;
-            this.label6.Text = "Varaus ID";
+            this.label6.Text = "Varausnumero";
             // 
             // tbVarausID
             // 
@@ -311,20 +310,20 @@ namespace Mokkivuokraus
             this.btnVaraa.Location = new System.Drawing.Point(499, 552);
             this.btnVaraa.Name = "btnVaraa";
             this.btnVaraa.Size = new System.Drawing.Size(105, 40);
-            this.btnVaraa.TabIndex = 24;
+            this.btnVaraa.TabIndex = 2;
             this.btnVaraa.Text = "Varaa";
             this.btnVaraa.UseVisualStyleBackColor = true;
             this.btnVaraa.Click += new System.EventHandler(this.btnVaraa_Click);
             // 
-            // label5
+            // lblVaraukset
             // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(9, 3);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(119, 29);
-            this.label5.TabIndex = 23;
-            this.label5.Text = "Varaukset";
+            this.lblVaraukset.AutoSize = true;
+            this.lblVaraukset.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblVaraukset.Location = new System.Drawing.Point(9, 3);
+            this.lblVaraukset.Name = "lblVaraukset";
+            this.lblVaraukset.Size = new System.Drawing.Size(119, 29);
+            this.lblVaraukset.TabIndex = 23;
+            this.lblVaraukset.Text = "Varaukset";
             // 
             // label4
             // 
@@ -439,7 +438,7 @@ namespace Mokkivuokraus
             this.nudLukumaara.Location = new System.Drawing.Point(48, 401);
             this.nudLukumaara.Name = "nudLukumaara";
             this.nudLukumaara.Size = new System.Drawing.Size(100, 22);
-            this.nudLukumaara.TabIndex = 12;
+            this.nudLukumaara.TabIndex = 2;
             // 
             // tbPalveluAlueID
             // 
@@ -493,7 +492,7 @@ namespace Mokkivuokraus
             this.tbPalveluID.Location = new System.Drawing.Point(48, 312);
             this.tbPalveluID.Name = "tbPalveluID";
             this.tbPalveluID.Size = new System.Drawing.Size(100, 22);
-            this.tbPalveluID.TabIndex = 5;
+            this.tbPalveluID.TabIndex = 1;
             // 
             // label14
             // 
@@ -563,35 +562,35 @@ namespace Mokkivuokraus
             // mokkiToolStripMenuItem
             // 
             this.mokkiToolStripMenuItem.Name = "mokkiToolStripMenuItem";
-            this.mokkiToolStripMenuItem.Size = new System.Drawing.Size(184, 26);
+            this.mokkiToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.mokkiToolStripMenuItem.Text = "Mökki";
             this.mokkiToolStripMenuItem.Click += new System.EventHandler(this.mokkiToolStripMenuItem_Click);
             // 
             // asiakasToolStripMenuItem
             // 
             this.asiakasToolStripMenuItem.Name = "asiakasToolStripMenuItem";
-            this.asiakasToolStripMenuItem.Size = new System.Drawing.Size(184, 26);
+            this.asiakasToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.asiakasToolStripMenuItem.Text = "Asiakas";
             this.asiakasToolStripMenuItem.Click += new System.EventHandler(this.asiakasToolStripMenuItem_Click);
             // 
             // palvelutToolStripMenuItem
             // 
             this.palvelutToolStripMenuItem.Name = "palvelutToolStripMenuItem";
-            this.palvelutToolStripMenuItem.Size = new System.Drawing.Size(184, 26);
+            this.palvelutToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.palvelutToolStripMenuItem.Text = "Palvelut";
             this.palvelutToolStripMenuItem.Click += new System.EventHandler(this.palvelutToolStripMenuItem_Click);
             // 
             // toimintaalueToolStripMenuItem
             // 
             this.toimintaalueToolStripMenuItem.Name = "toimintaalueToolStripMenuItem";
-            this.toimintaalueToolStripMenuItem.Size = new System.Drawing.Size(184, 26);
+            this.toimintaalueToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.toimintaalueToolStripMenuItem.Text = "Toiminta-alue";
             this.toimintaalueToolStripMenuItem.Click += new System.EventHandler(this.toimintaalueToolStripMenuItem_Click);
             // 
             // laskutToolStripMenuItem
             // 
             this.laskutToolStripMenuItem.Name = "laskutToolStripMenuItem";
-            this.laskutToolStripMenuItem.Size = new System.Drawing.Size(184, 26);
+            this.laskutToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.laskutToolStripMenuItem.Text = "Laskutus";
             this.laskutToolStripMenuItem.Click += new System.EventHandler(this.laskutToolStripMenuItem_Click);
             // 
@@ -606,7 +605,7 @@ namespace Mokkivuokraus
             // tyhjennäTiedotToolStripMenuItem
             // 
             this.tyhjennäTiedotToolStripMenuItem.Name = "tyhjennäTiedotToolStripMenuItem";
-            this.tyhjennäTiedotToolStripMenuItem.Size = new System.Drawing.Size(194, 26);
+            this.tyhjennäTiedotToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.tyhjennäTiedotToolStripMenuItem.Text = "Tyhjennä tiedot";
             this.tyhjennäTiedotToolStripMenuItem.Click += new System.EventHandler(this.tyhjennäTiedotToolStripMenuItem_Click);
             // 
@@ -686,7 +685,7 @@ namespace Mokkivuokraus
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox tbVarausID;
         private System.Windows.Forms.Button btnVaraa;
-        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label lblVaraukset;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox tbMokkinimi;
