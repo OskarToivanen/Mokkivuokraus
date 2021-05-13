@@ -60,12 +60,12 @@ namespace Mokkivuokraus
             this.btnPoista = new System.Windows.Forms.Button();
             this.dgvVahvistetutLaskut = new System.Windows.Forms.DataGridView();
             this.tabVahvistaLasku = new System.Windows.Forms.TabPage();
+            this.lblLaskuNro = new System.Windows.Forms.Label();
             this.gbLaskutus = new System.Windows.Forms.GroupBox();
             this.rbSpostiLasku = new System.Windows.Forms.RadioButton();
             this.rbPaperiLasku = new System.Windows.Forms.RadioButton();
             this.btnVahvistaLasku = new System.Windows.Forms.Button();
             this.lbVahvistaLasku = new System.Windows.Forms.ListBox();
-            this.lblLaskuNro = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -96,31 +96,31 @@ namespace Mokkivuokraus
             this.palvelutToolStripMenuItem,
             this.toimintaalueToolStripMenuItem});
             this.avaaToolStripMenuItem.Name = "avaaToolStripMenuItem";
-            this.avaaToolStripMenuItem.Size = new System.Drawing.Size(56, 24);
-            this.avaaToolStripMenuItem.Text = "Avaa";
+            this.avaaToolStripMenuItem.Size = new System.Drawing.Size(70, 24);
+            this.avaaToolStripMenuItem.Text = "Valikko";
             // 
             // mokkiToolStripMenuItem
             // 
             this.mokkiToolStripMenuItem.Name = "mokkiToolStripMenuItem";
-            this.mokkiToolStripMenuItem.Size = new System.Drawing.Size(184, 26);
+            this.mokkiToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.mokkiToolStripMenuItem.Text = "Mökki";
             // 
             // asiakasToolStripMenuItem
             // 
             this.asiakasToolStripMenuItem.Name = "asiakasToolStripMenuItem";
-            this.asiakasToolStripMenuItem.Size = new System.Drawing.Size(184, 26);
+            this.asiakasToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.asiakasToolStripMenuItem.Text = "Asiakas";
             // 
             // palvelutToolStripMenuItem
             // 
             this.palvelutToolStripMenuItem.Name = "palvelutToolStripMenuItem";
-            this.palvelutToolStripMenuItem.Size = new System.Drawing.Size(184, 26);
+            this.palvelutToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.palvelutToolStripMenuItem.Text = "Palvelut";
             // 
             // toimintaalueToolStripMenuItem
             // 
             this.toimintaalueToolStripMenuItem.Name = "toimintaalueToolStripMenuItem";
-            this.toimintaalueToolStripMenuItem.Size = new System.Drawing.Size(184, 26);
+            this.toimintaalueToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.toimintaalueToolStripMenuItem.Text = "Toiminta-alue";
             // 
             // statusStrip1
@@ -369,6 +369,16 @@ namespace Mokkivuokraus
             this.tabVahvistaLasku.TabIndex = 2;
             this.tabVahvistaLasku.Text = "Vahvista lasku";
             // 
+            // lblLaskuNro
+            // 
+            this.lblLaskuNro.AutoSize = true;
+            this.lblLaskuNro.Location = new System.Drawing.Point(37, 433);
+            this.lblLaskuNro.Name = "lblLaskuNro";
+            this.lblLaskuNro.Size = new System.Drawing.Size(56, 17);
+            this.lblLaskuNro.TabIndex = 5;
+            this.lblLaskuNro.Text = "            ";
+            this.lblLaskuNro.Visible = false;
+            // 
             // gbLaskutus
             // 
             this.gbLaskutus.Controls.Add(this.rbSpostiLasku);
@@ -422,16 +432,6 @@ namespace Mokkivuokraus
             this.lbVahvistaLasku.Name = "lbVahvistaLasku";
             this.lbVahvistaLasku.Size = new System.Drawing.Size(583, 420);
             this.lbVahvistaLasku.TabIndex = 0;
-            // 
-            // lblLaskuNro
-            // 
-            this.lblLaskuNro.AutoSize = true;
-            this.lblLaskuNro.Location = new System.Drawing.Point(37, 433);
-            this.lblLaskuNro.Name = "lblLaskuNro";
-            this.lblLaskuNro.Size = new System.Drawing.Size(56, 17);
-            this.lblLaskuNro.TabIndex = 5;
-            this.lblLaskuNro.Text = "            ";
-            this.lblLaskuNro.Visible = false;
             // 
             // Laskutustiedot
             // 

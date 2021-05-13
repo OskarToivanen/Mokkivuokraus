@@ -42,7 +42,6 @@ namespace Mokkivuokraus
             this.btnUusiVaraus = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
             this.cbToimintaalue = new System.Windows.Forms.ComboBox();
-            this.toimintaalueBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.cbAsiakas = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
             this.btnPoista = new System.Windows.Forms.Button();
@@ -72,6 +71,7 @@ namespace Mokkivuokraus
             this.label13 = new System.Windows.Forms.Label();
             this.tbVarausPalveluVarausID = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
+            this.toimintaalueBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.mokkiBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.avaaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -92,11 +92,11 @@ namespace Mokkivuokraus
             ((System.ComponentModel.ISupportInitialize)(this.asiakasBindingSource)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tpVaraukset.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.toimintaalueBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvVaraus)).BeginInit();
             this.tbVarausPalvelut.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudLukumaara)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPalvelu)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.toimintaalueBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mokkiBindingSource)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
@@ -236,11 +236,6 @@ namespace Mokkivuokraus
             this.cbToimintaalue.Size = new System.Drawing.Size(121, 24);
             this.cbToimintaalue.TabIndex = 1;
             this.cbToimintaalue.SelectedIndexChanged += new System.EventHandler(this.cbToimintaalue_SelectedIndexChanged);
-            // 
-            // toimintaalueBindingSource
-            // 
-            this.toimintaalueBindingSource.DataMember = "toimintaalue";
-            this.toimintaalueBindingSource.DataSource = this.villageNewbiesDataset;
             // 
             // cbAsiakas
             // 
@@ -489,6 +484,7 @@ namespace Mokkivuokraus
             // 
             // tbPalveluID
             // 
+            this.tbPalveluID.Enabled = false;
             this.tbPalveluID.Location = new System.Drawing.Point(48, 312);
             this.tbPalveluID.Name = "tbPalveluID";
             this.tbPalveluID.Size = new System.Drawing.Size(100, 22);
@@ -530,6 +526,11 @@ namespace Mokkivuokraus
             this.label12.TabIndex = 1;
             this.label12.Text = "Varaus ID";
             // 
+            // toimintaalueBindingSource
+            // 
+            this.toimintaalueBindingSource.DataMember = "toimintaalue";
+            this.toimintaalueBindingSource.DataSource = this.villageNewbiesDataset;
+            // 
             // mokkiBindingSource
             // 
             this.mokkiBindingSource.DataMember = "mokki";
@@ -556,8 +557,8 @@ namespace Mokkivuokraus
             this.toimintaalueToolStripMenuItem,
             this.laskutToolStripMenuItem});
             this.avaaToolStripMenuItem.Name = "avaaToolStripMenuItem";
-            this.avaaToolStripMenuItem.Size = new System.Drawing.Size(56, 24);
-            this.avaaToolStripMenuItem.Text = "Avaa";
+            this.avaaToolStripMenuItem.Size = new System.Drawing.Size(70, 24);
+            this.avaaToolStripMenuItem.Text = "Valikko";
             // 
             // mokkiToolStripMenuItem
             // 
@@ -659,12 +660,12 @@ namespace Mokkivuokraus
             this.tabControl1.ResumeLayout(false);
             this.tpVaraukset.ResumeLayout(false);
             this.tpVaraukset.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.toimintaalueBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvVaraus)).EndInit();
             this.tbVarausPalvelut.ResumeLayout(false);
             this.tbVarausPalvelut.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudLukumaara)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPalvelu)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.toimintaalueBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.mokkiBindingSource)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();

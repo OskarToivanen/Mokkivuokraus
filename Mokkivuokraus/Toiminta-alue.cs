@@ -246,12 +246,5 @@ namespace Mokkivuokraus
             Laskutustiedot laskutform = new Laskutustiedot();
             laskutform.Show();
         }
-
-        private void uusiVarausToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Varaukset varauksetform = new Varaukset();
-            varauksetform.Show();
-        }
-       
     }
 }

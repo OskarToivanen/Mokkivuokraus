@@ -39,7 +39,6 @@ namespace Mokkivuokraus
             this.varauksetToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.laskutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lisääToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.uusiVarausToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tyhjennäTiedotToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -144,23 +143,15 @@ namespace Mokkivuokraus
             // lisääToolStripMenuItem
             // 
             this.lisääToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.uusiVarausToolStripMenuItem,
             this.tyhjennäTiedotToolStripMenuItem});
             this.lisääToolStripMenuItem.Name = "lisääToolStripMenuItem";
             this.lisääToolStripMenuItem.Size = new System.Drawing.Size(56, 24);
             this.lisääToolStripMenuItem.Text = "Lisää";
             // 
-            // uusiVarausToolStripMenuItem
-            // 
-            this.uusiVarausToolStripMenuItem.Name = "uusiVarausToolStripMenuItem";
-            this.uusiVarausToolStripMenuItem.Size = new System.Drawing.Size(194, 26);
-            this.uusiVarausToolStripMenuItem.Text = "Uusi varaus";
-            this.uusiVarausToolStripMenuItem.Click += new System.EventHandler(this.uusiVarausToolStripMenuItem_Click);
-            // 
             // tyhjennäTiedotToolStripMenuItem
             // 
             this.tyhjennäTiedotToolStripMenuItem.Name = "tyhjennäTiedotToolStripMenuItem";
-            this.tyhjennäTiedotToolStripMenuItem.Size = new System.Drawing.Size(194, 26);
+            this.tyhjennäTiedotToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.tyhjennäTiedotToolStripMenuItem.Text = "Tyhjennä tiedot";
             this.tyhjennäTiedotToolStripMenuItem.Click += new System.EventHandler(this.tyhjennäTiedotToolStripMenuItem_Click);
             // 
@@ -389,7 +380,6 @@ namespace Mokkivuokraus
         private System.Windows.Forms.ToolStripMenuItem tyhjennäTiedotToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem varauksetToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem laskutToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem uusiVarausToolStripMenuItem;
     }
 }
 
