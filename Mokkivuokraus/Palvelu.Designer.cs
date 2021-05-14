@@ -57,7 +57,6 @@ namespace Mokkivuokraus
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.tsslKello = new System.Windows.Forms.ToolStripStatusLabel();
             this.timerKellonAika = new System.Windows.Forms.Timer(this.components);
-            this.btnMuokkaa = new System.Windows.Forms.Button();
             this.btnPoista = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPalvelu)).BeginInit();
             this.menuStrip1.SuspendLayout();
@@ -67,11 +66,11 @@ namespace Mokkivuokraus
             // dgvPalvelu
             // 
             this.dgvPalvelu.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvPalvelu.Location = new System.Drawing.Point(425, 45);
+            this.dgvPalvelu.Location = new System.Drawing.Point(327, 45);
             this.dgvPalvelu.Name = "dgvPalvelu";
             this.dgvPalvelu.RowHeadersWidth = 51;
             this.dgvPalvelu.RowTemplate.Height = 24;
-            this.dgvPalvelu.Size = new System.Drawing.Size(570, 445);
+            this.dgvPalvelu.Size = new System.Drawing.Size(668, 445);
             this.dgvPalvelu.TabIndex = 0;
             this.dgvPalvelu.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPalvelu_CellClick);
             // 
@@ -91,7 +90,7 @@ namespace Mokkivuokraus
             this.lisääToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1017, 30);
+            this.menuStrip1.Size = new System.Drawing.Size(1017, 28);
             this.menuStrip1.TabIndex = 3;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -104,7 +103,7 @@ namespace Mokkivuokraus
             this.toimintaalueToolStripMenuItem,
             this.varauksetToolStripMenuItem});
             this.avaaToolStripMenuItem.Name = "avaaToolStripMenuItem";
-            this.avaaToolStripMenuItem.Size = new System.Drawing.Size(70, 26);
+            this.avaaToolStripMenuItem.Size = new System.Drawing.Size(70, 24);
             this.avaaToolStripMenuItem.Text = "Valikko";
             // 
             // mokkiToolStripMenuItem
@@ -149,7 +148,7 @@ namespace Mokkivuokraus
             // tyhjennäTiedotToolStripMenuItem
             // 
             this.tyhjennäTiedotToolStripMenuItem.Name = "tyhjennäTiedotToolStripMenuItem";
-            this.tyhjennäTiedotToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.tyhjennäTiedotToolStripMenuItem.Size = new System.Drawing.Size(194, 26);
             this.tyhjennäTiedotToolStripMenuItem.Text = "Tyhjennä tiedot";
             this.tyhjennäTiedotToolStripMenuItem.Click += new System.EventHandler(this.tyhjennäTiedotToolStripMenuItem_Click);
             // 
@@ -287,19 +286,9 @@ namespace Mokkivuokraus
             // 
             this.timerKellonAika.Tick += new System.EventHandler(this.timerKellonAika_Tick);
             // 
-            // btnMuokkaa
-            // 
-            this.btnMuokkaa.Location = new System.Drawing.Point(168, 452);
-            this.btnMuokkaa.Name = "btnMuokkaa";
-            this.btnMuokkaa.Size = new System.Drawing.Size(102, 38);
-            this.btnMuokkaa.TabIndex = 18;
-            this.btnMuokkaa.Text = "Muokkaa";
-            this.btnMuokkaa.UseVisualStyleBackColor = true;
-            this.btnMuokkaa.Click += new System.EventHandler(this.btnMuokkaa_Click);
-            // 
             // btnPoista
             // 
-            this.btnPoista.Location = new System.Drawing.Point(303, 452);
+            this.btnPoista.Location = new System.Drawing.Point(164, 452);
             this.btnPoista.Name = "btnPoista";
             this.btnPoista.Size = new System.Drawing.Size(102, 38);
             this.btnPoista.TabIndex = 19;
@@ -313,7 +302,6 @@ namespace Mokkivuokraus
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1017, 539);
             this.Controls.Add(this.btnPoista);
-            this.Controls.Add(this.btnMuokkaa);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.tbAlv);
@@ -373,7 +361,6 @@ namespace Mokkivuokraus
         private System.Windows.Forms.ToolStripStatusLabel tsslKello;
         private System.Windows.Forms.Timer timerKellonAika;
         private System.Windows.Forms.ToolStripMenuItem varauksetToolStripMenuItem;
-        private System.Windows.Forms.Button btnMuokkaa;
         private System.Windows.Forms.Button btnPoista;
     }
 }
